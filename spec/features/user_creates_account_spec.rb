@@ -31,7 +31,16 @@ feature "User creates an account", %Q{
     # expect(User.count).to eq previous_count + 1
   end
 
-  scenario "without required information"
+  scenario "without required information" do
+    visit root_path
+    click_on "Sign up"
+
+    within ".new_user" do
+      click_on "Sign up"
+    end
+
+    expect(page).to have_content "can't be blank"
+  end
 
   scenario "email already in use"
 
