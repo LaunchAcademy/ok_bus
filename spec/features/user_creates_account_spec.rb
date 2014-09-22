@@ -21,8 +21,11 @@ feature "User creates an account", %Q{
 
     fill_in "Email", with: "testperson@example.com"
     fill_in "Password", with: "abcd12345"
-    fill_in "Password Confirmation", with: "abcd12345"
-    click_on "Submit"
+    fill_in "Password confirmation", with: "abcd12345"
+
+    within ".new_user" do
+      click_on "Sign up"
+    end
 
     expect(page).to have_content "Welcome! You have signed up successfully."
     # expect(User.count).to eq previous_count + 1
