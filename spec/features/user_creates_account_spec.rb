@@ -39,7 +39,8 @@ feature "User creates an account", %Q{
       click_on "Sign up"
     end
 
-    expect(page).to have_content "can't be blank"
+    expect(page).to have_content "Email can't be blank"
+    expect(page).to have_content "Password can't be blank"
   end
 
   scenario "email already in use"
