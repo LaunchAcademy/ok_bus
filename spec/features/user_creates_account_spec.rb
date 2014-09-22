@@ -10,6 +10,7 @@ feature "User creates an account", %Q{
    I must provide a username, and email address.
    If I do not provide the required information, I receive an error message.
    If my email address is already in use, I receive an error message.
+   If password does not match password confirmation, I receive an error message.
    I must not be logged in to create an account.
   } do
 
@@ -43,7 +44,24 @@ feature "User creates an account", %Q{
     expect(page).to have_content "Password can't be blank"
   end
 
-  scenario "email already in use"
+  scenario "email already in use" do
+    existing_user = User.create(email: "testperson@example.com", password: "abcd12345")
+
+    visit root_path
+    click_on "Sign up"
+
+    fill_in "Email", with: existing_user.email
+    fill_in "Password", with: existing_user.password
+    fill_in "Password confirmation", with: existing_user.password
+
+    within ".new_user" do
+      click_on "Sign up"
+    end
+
+    expect(page).to have_content "Email has already been taken"
+  end
+
+  scenario "password confirmation does not match password"
 
   scenario "user is already logged in"
 
