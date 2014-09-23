@@ -21,15 +21,18 @@ feature "User views reviews", %Q{
 
   scenario "review successfully added" do
 
-    bus = FactoryGirl.create(:bus)
+    ride = FactoryGirl.create(:ride)
+    bus = ride.bus
 
     visit new_review_path(bus.id)
 
-    review_attrs = { bus_line_number: rand(1..100), rating: rand(1..5) }
+    review_attrs = { bus_line_number: bus.line_number, rating: rand(1..5),
+      day: ride.day, direction: ride.direction, timeframe: ride.timeframe,
+      body: Faker::Lorem.sentence }
 
     review = Review.new(review_attrs)
 
-    fill_in 'Bus line number', with: review.body
+    fill_in 'Bus line number', with: review.bus_line_number
     select review.rating, from: 'review[rating]'
 
     click_button 'Create Rating'
@@ -38,7 +41,8 @@ feature "User views reviews", %Q{
   end
 
   scenario "creating review fails without bus line number" do
-    bus = FactoryGirl.create(:bus)
+    ride = FactoryGirl.create(:ride)
+    bus = ride.bus
 
     visit bus_path(bus.id)
 
@@ -50,11 +54,12 @@ feature "User views reviews", %Q{
   end
 
   scenario "creating review fails without rating" do
-    bus = FactoryGirl.create(:bus)
+    ride = FactoryGirl.create(:ride)
+    bus = ride.bus
 
     visit bus_path(bus.id)
 
-    fill_in 'Bus line number', with: rand(1..100)
+    fill_in 'Bus line number', with: bus.line_number
 
     click_on 'Create Review'
 
