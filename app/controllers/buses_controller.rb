@@ -1,6 +1,6 @@
 class BusesController < ApplicationController
   def index
-    @buses = Bus.all.order(number: :asc)
+    @buses = Bus.order(:number)
   end
 
   def show

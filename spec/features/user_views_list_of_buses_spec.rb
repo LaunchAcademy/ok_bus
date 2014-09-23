@@ -1,4 +1,4 @@
-feature "User views list of buses", %Q{
+feature "User views list of buses", %{
   As a user I want to see a list of buses
   So that I can select one to read and post reviews
 
@@ -12,11 +12,11 @@ feature "User views list of buses", %Q{
   scenario "listed in order" do
     bus1 = Bus.create(number: "2", inbound: "Boston", outbound: "New York")
     bus2 = Bus.create(number: "3", inbound: "New York", outbound: "Chicago")
-    bus3 = Bus.create(number: "1", inbound: "Chicago", outbound: "Boston")
 
     visit buses_path
 
     expect(page).to have_content bus1.number
+    expect(page).to have_content bus2.number
   end
 
   scenario "links to individual bus page" do
