@@ -11,15 +11,16 @@ feature "User views list of buses", %Q{
   } do
 
   scenario "listed in order" do
+    bus = Bus.create(number:)
     visit buses_path
 
-    expect(page).to have_content "1 - Harvard/Holyoke Gate - Dudley Station via Massachusetts Avenue"
+    expect(page).to have_content "117"
   end
 
   scenario "links to individual bus page" do
     click_on "1 - Harvard/Holyoke Gate - Dudley Station via Massachusetts Avenue"
 
-    expect
+    expect bus_path
   end
 
   scenario "The list must include the end destinations" do
