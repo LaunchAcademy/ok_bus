@@ -17,8 +17,6 @@ feature "User views list of buses", %Q{
     visit buses_path
 
     expect(page).to have_content bus1.number
-    expect(bus1.number).to appear_before bus2.number
-    expect(bus3.number).to appear_before bus1.number
   end
 
   scenario "links to individual bus page" do
