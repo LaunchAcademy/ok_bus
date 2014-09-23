@@ -1,15 +1,19 @@
 class Ride < ActiveRecord::Base
   belongs_to :bus
 
-  validates :timeframe, presence: true,
-                        uniqueness: { scope: :direction, :day, :bus}
+  validates :timeframe, presence: true, uniqueness: { scope:  :direction,
+                                                              :day,
+                                                              :bus}
 
-  validates :direction, presence: true, uniqueness: true
-                        uniqueness: { scope: :timeframe, :day, :bus}
+  validates :direction, presence: true, uniqueness: { scope:  :timeframe,
+                                                              :day,
+                                                              :bus}
 
-  validates :day,       presence: true, uniqueness: true
-                        uniqueness: { scope: timeframe:, :direction, :bus}
+  validates :day,       presence: true, uniqueness: { scope:  :timeframe,
+                                                              :direction,
+                                                              :bus}
 
-  validates :bus,       presence: true, uniqueness: true
-                        uniqueness: { scope: timeframe:, :direction, :day}
+  validates :bus,       presence: true, uniqueness: { scope:  timeframe:,
+                                                              :direction,
+                                                              :day}
 end
