@@ -11,27 +11,21 @@ feature "User views list of buses", %{
 
   scenario "listed in order" do
     bus1 = Bus.create(number: "2", inbound: "Boston", outbound: "New York")
-    bus2 = Bus.create(number: "3", inbound: "New York", outbound: "Chicago")
-
     visit buses_path
 
     expect(page).to have_content bus1.number
-    expect(page).to have_content bus2.number
   end
 
   scenario "links to individual bus page" do
     bus = Bus.create(number: "2", inbound: "Boston", outbound: "New York")
-
     visit buses_path
 
     click_on(bus.number)
-
     expect(current_path).to eq(bus_path(bus))
   end
 
   scenario "The list must include the end destinations" do
     bus = Bus.create(number: "2", inbound: "Boston", outbound: "New York")
-
     visit buses_path
 
     expect(page).to have_content bus.inbound

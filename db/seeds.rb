@@ -24,7 +24,7 @@ CSV.foreach("db/data/buses.csv", headers: true) do |row|
 
   timeframes.each do |t|
     direction.each do |d|
-      day.each do |day|
+      days.each do |day|
         ride_attr = {
           timeframe: t,
           direction: d,
