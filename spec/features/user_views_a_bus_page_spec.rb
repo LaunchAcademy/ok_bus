@@ -4,7 +4,7 @@ feature "User views list of buses", %Q{
   } do
 
   scenario "bus number listed" do
-    bus = Bus.create(number: 1, inbound: "Boston", outbound: "New York")
+    bus = Bus.create(number: "1", inbound: "Boston", outbound: "New York")
 
     visit bus_path(bus)
 
@@ -12,7 +12,7 @@ feature "User views list of buses", %Q{
   end
 
   scenario "bus line ends listed" do
-    bus = Bus.create(number: 1, inbound: "Boston", outbound: "New York")
+    bus = Bus.create(number: "1", inbound: "Boston", outbound: "New York")
 
     visit bus_path(bus)
 
