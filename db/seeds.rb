@@ -17,7 +17,7 @@ timeframes = ["6-9 AM",
               "9PM-12AM",
               "12-6AM"]
 direction = ["inbound", "outbound"]
-day = ["weekday", "weekend"]
+days = ["weekday", "weekend"]
 
 CSV.foreach("db/data/buses.csv", headers: true) do |row|
   bus = Bus.find_or_create_by(row.to_hash)
