@@ -11,16 +11,24 @@ feature "User views list of buses", %Q{
   } do
 
   scenario "listed in order" do
-    bus = Bus.create(number:)
+    bus1 = Bus.create(number: 2, inbound: "Boston", outbound: "New York")
+    bus2 = Bus.create(number: 3, inbound: "New York", outbound: "Chicago")
+    bus3 = Bus.create(number: 1, inbound: "Chicago", outbound: "Boston")
+
     visit buses_path
 
-    expect(page).to have_content "117"
+    save_and_open_page
+
+    expect(page).to have_content bus1.number
+    # expect(bus1.number).to appear_before bus2.number
+    # expect(bus3.number).to appear_before bus1.number
   end
 
   scenario "links to individual bus page" do
-    click_on "1 - Harvard/Holyoke Gate - Dudley Station via Massachusetts Avenue"
+    bus = Bus.create(number: 2, inbound: "Boston", outbound: "New York")
+    click_on Bus.number
 
-    expect bus_path
+    expect bus_path(bus.id)
   end
 
   scenario "The list must include the end destinations" do
