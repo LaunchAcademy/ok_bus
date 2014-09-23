@@ -7,7 +7,7 @@ feature "User creates an account", %Q{
 
   Acceptance Criteria:
 
-   I must provide a username, and email address.
+   I must provide a username, email address, and password.
    If I do not provide the required information, I receive an error message.
    If my email address is already in use, I receive an error message.
    If password does not match password confirmation, I receive an error message.
@@ -15,14 +15,14 @@ feature "User creates an account", %Q{
   } do
 
   scenario "with required information" do
-    # previous_count = User.count
-
+    user = FactoryGirl.build(:user)
     visit root_path
     click_on "Sign up"
 
-    fill_in "Email", with: "testperson@example.com"
-    fill_in "Password", with: "abcd12345"
-    fill_in "Password confirmation", with: "abcd12345"
+    fill_in "Username", with: user.username
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    fill_in "Password confirmation", with: user.password
 
     within ".new_user" do
       click_on "Sign up"
@@ -45,11 +45,11 @@ feature "User creates an account", %Q{
   end
 
   scenario "email already in use" do
-    existing_user = User.create(email: "testperson@example.com", password: "abcd12345")
-
+    existing_user = FactoryGirl.create(:user)
     visit root_path
     click_on "Sign up"
 
+    fill_in "Username", with: existing_user.username
     fill_in "Email", with: existing_user.email
     fill_in "Password", with: existing_user.password
     fill_in "Password confirmation", with: existing_user.password
@@ -61,8 +61,27 @@ feature "User creates an account", %Q{
     expect(page).to have_content "Email has already been taken"
   end
 
-  scenario "password confirmation does not match password"
+  scenario "password confirmation does not match password" do
+    user = FactoryGirl.build(:user)
+    visit root_path
+    click_on "Sign up"
 
-  scenario "user is already logged in"
+    fill_in "Username", with: user.username
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    fill_in "Password confirmation", with: user.password + "1"
 
+    within ".new_user" do
+      click_on "Sign up"
+    end
+  end
+
+  scenario "user is already logged in" do
+    # log in a user
+    user = FactoryGirl.create(:user)
+    sign_in_as(user)
+
+    # make sure Sign Up button isn't on page
+    expect(page).to_not have_content "Sign up"
+  end
 end
