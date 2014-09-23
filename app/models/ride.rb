@@ -13,7 +13,7 @@ class Ride < ActiveRecord::Base
                                                               :direction,
                                                               :bus}
 
-  validates :bus,       presence: true, uniqueness: { scope:  timeframe:,
+  validates :bus,       presence: true, uniqueness: { scope:  :timeframe,
                                                               :direction,
                                                               :day}
 end
