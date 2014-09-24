@@ -15,6 +15,15 @@ feature "User views all reviews for bus", %{
   scenario "only see reviews associated with bus" do
     review1 = FactoryGirl.create(:review)
     review2 = FactoryGirl.create(:review)
+    bus = review1.ride.bus
+    visit bus_path(bus)
+    save_and_open_page
+
+    if review2.ride.bus == bus
+      expect(page).to have_content review2.user.username
+    else
+      expect(page).to_not have_content review2.user.username
+    end
   end
 
   scenario "reviews are in order with most recent first" do
@@ -22,7 +31,6 @@ feature "User views all reviews for bus", %{
     review2 = FactoryGirl.create(:review, ride: review1.ride)
     bus = review1.ride.bus
     visit bus_path(bus)
-    save_and_open_page
 
     if review1.created_at > review2.created_at
       expect(review1.user.username).to appear_before review2.user.username
