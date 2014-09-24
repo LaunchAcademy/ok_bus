@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "User views reviews", %{
+feature "User adds a review", %{
   As a user
   I want to add a review
   So that I can provide other users
@@ -24,10 +24,9 @@ feature "User views reviews", %{
     ride = FactoryGirl.create(:ride)
     bus = ride.bus
 
-    visit new_bus_review_path(bus.id)
+    visit new_bus_review_path(bus)
 
-    review_attrs = { bus: bus.number, rating: rand(1..5),
-      day: ride.day, direction: ride.direction, timeframe: ride.timeframe,
+    review_attrs = { ride_id: ride.id,rating: rand(1..5),
       body: Faker::Lorem.sentence }
 
     review = Review.new(review_attrs)
