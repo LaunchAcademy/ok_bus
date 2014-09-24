@@ -15,5 +15,9 @@
     </p>
     <h3><%= review.rating %> out of 5</h3>
     <p><%= review.body %></p>
+    <a href="<%= edit_review_path(review) %>" class="button">Edit Review</a>
+      <% if review.user_id == session[:user_id] %>
+    <a href="<%= edit_review_path(review) %>" class="button">Edit Review</a>
   <% end %>
 </div>
+
