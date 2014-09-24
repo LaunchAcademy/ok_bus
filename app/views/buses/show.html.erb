@@ -6,13 +6,12 @@
 
 <div class="review">
   <% @reviews.each do |review| %>
-    <% @ride = Ride.find(review.ride_id) %>
     <p>
-      <%= User.find(review.user_id) %>
+      <%= review.user.username %>
       rode bus <%= @bus.number %>
-      towards <%= @ride.direction %>
-      on a <%= @ride.day %>
-      between <%= @ride.timeframe %>
+      towards <%= review.ride.direction %>
+      on a <%= review.ride.day %>
+      between <%= review.ride.timeframe %>
     </p>
     <h3><%= review.rating %> out of 5</h3>
     <p><%= review.body %></p>
