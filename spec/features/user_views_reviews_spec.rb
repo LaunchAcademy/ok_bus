@@ -17,7 +17,6 @@ feature "User views all reviews for bus", %{
     review2 = FactoryGirl.create(:review)
     bus = review1.ride.bus
     visit bus_path(bus)
-    save_and_open_page
 
     if review2.ride.bus == bus
       expect(page).to have_content review2.user.username
