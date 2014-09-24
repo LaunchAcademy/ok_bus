@@ -1,13 +1,7 @@
 class ChangeRideParametersToNullFalse < ActiveRecord::Migration
-  def up
-    change_column :rides, :timeframe, :string, null: false
-    change_column :rides, :direction, :string, null: false
-    change_column :rides, :day,       :string, null: false
-  end
-
-  def down
-    change_column :rides, :timeframe, :string
-    change_column :rides, :direction, :string
-    change_column :rides, :day,       :string
+  def change
+    change_column_null :rides, :timeframe, false
+    change_column_null :rides, :direction, false
+    change_column_null :rides, :day,       false
   end
 end
