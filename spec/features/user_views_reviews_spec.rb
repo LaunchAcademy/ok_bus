@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 feature "User views all reviews for bus", %{
   As a user I want to view all the reviews for a bus

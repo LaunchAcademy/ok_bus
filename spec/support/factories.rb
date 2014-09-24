@@ -21,7 +21,7 @@ FactoryGirl.define do
   factory :review do
     ride
     user
-    rating {rand(1..5)}
+    rating { rand(1..5) }
     body Faker::Lorem.sentence
   end
 end
