@@ -30,6 +30,8 @@ gem 'foundation-rails', '5.4.3.0'
 
 gem 'devise'
 
+gem 'carrierwave'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
