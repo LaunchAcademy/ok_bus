@@ -5,5 +5,6 @@ class BusesController < ApplicationController
 
   def show
     @bus = Bus.find(params[:id])
+    @reviews = @bus.reviews
   end
 end
