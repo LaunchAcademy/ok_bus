@@ -13,9 +13,7 @@
 
   <div class="field">
     <%= f.label :ride_id %><br>
-    <%= f.collection_select :ride_id, @ride, :id, {:day,
-                                                   :direction,
-                                                   :timeframe} %>
+    <%= f.collection_select :ride_id, @bus.rides, :id, ride_with_description %>
   </div>
   <div class="field">
     <%= f.label :rating %><br>
