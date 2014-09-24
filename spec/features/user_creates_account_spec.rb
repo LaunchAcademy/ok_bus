@@ -61,6 +61,23 @@ feature "User creates an account", %Q{
     expect(page).to have_content "Email has already been taken"
   end
 
+  scenario "username already taken" do
+    existing_user = FactoryGirl.create(:user)
+    visit root_path
+    click_on "Sign up"
+
+    fill_in "Username", with: existing_user.username
+    fill_in "Email", with: existing_user.email + "1"
+    fill_in "Password", with: existing_user.password
+    fill_in "Password confirmation", with: existing_user.password
+
+    within ".new_user" do
+      click_on "Sign up"
+    end
+
+    expect(page).to have_content "Username has already been taken"
+  end
+
   scenario "password confirmation does not match password" do
     user = FactoryGirl.build(:user)
     visit root_path
