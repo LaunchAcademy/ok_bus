@@ -21,25 +21,33 @@ feature "User adds a review", %{
 
   scenario "review successfully added" do
 
+    user = FactoryGirl.create(:user)
+    sign_in_as(user)
+
     ride = FactoryGirl.create(:ride)
     bus = ride.bus
 
     visit new_bus_review_path(bus.id)
 
-    review_attrs = { ride_id: ride.id, rating: rand(1..5),
+    review_attrs = { user_id: user.id, ride_id: ride.id, rating: rand(1..5),
       body: Faker::Lorem.sentence }
 
     review = Review.new(review_attrs)
 
-    fill_in "Bus line number", with: review.bus
+    select review.ride.description, from: "review[ride_id]"
     select review.rating, from: "review[rating]"
 
-    click_button "Create Rating"
+    click_on "Create Review"
+
+    save_and_open_page
 
     expect(page).to have_content "Review successfully created."
   end
 
   scenario "creating review fails without bus line number" do
+    user = FactoryGirl.create(:user)
+    sign_in_as(user)
+
     ride = FactoryGirl.create(:ride)
     bus = ride.bus
 
@@ -53,12 +61,15 @@ feature "User adds a review", %{
   end
 
   scenario "creating review fails without rating" do
+    user = FactoryGirl.create(:user)
+    sign_in_as(user)
+
     ride = FactoryGirl.create(:ride)
     bus = ride.bus
 
     visit bus_path(bus.id)
 
-    fill_in "Bus line number", with: bus.number
+    select review.ride.description, from: "review[ride_id]"
 
     click_on "Create Review"
 
