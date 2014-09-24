@@ -34,6 +34,8 @@ gem 'carrierwave'
 
 gem 'fog'
 
+# gem 'carrierwave-aws'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
