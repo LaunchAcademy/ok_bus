@@ -12,14 +12,14 @@ class Ride < ActiveRecord::Base
   belongs_to :bus
 
   validates :timeframe,
-            presence: true
+            presence: true,
             inclusion: { in: TIMEFRAMES }
 
   validates :direction,
             presence: true,
             inclusion: { in: DIRECTIONS }
   validates :day,
-            presence: true
+            presence: true,
             inclusion: { in: DAYS }
   validates :bus,
             presence: true,
