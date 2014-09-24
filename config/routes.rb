@@ -2,12 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'buses#index'
 
-  resources :buses, only: [:index, :show]
-
-  resources :rides do
+  resources :buses, only: [:index, :show] do
     resources :reviews, only: [:new, :create, :show]
   end
-
 
 
 
