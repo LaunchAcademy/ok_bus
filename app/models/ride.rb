@@ -10,6 +10,7 @@ class Ride < ActiveRecord::Base
                 "12-6AM"]
 
   belongs_to :bus
+  has_many :reviews
 
   validates :timeframe,
             presence: true,
