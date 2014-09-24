@@ -35,5 +35,8 @@ end
 private
 
 def review_params
-  params.require(:review).permit(:ride_id, :rating, :body).merge(user: current_user)
+  params.require(:review).permit(:ride_id,
+                                 :rating,
+                                 :body
+                                 ).merge(user: current_user)
 end
