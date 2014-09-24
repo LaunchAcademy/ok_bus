@@ -35,6 +35,8 @@ group :development, :test do
   gem 'capybara'
   gem 'pry-rails'
   gem 'launchy'
+  gem 'orderly'
+  gem 'factory_girl_rails'
 end
 
 gem 'faker'
@@ -50,4 +52,3 @@ gem 'faker'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-

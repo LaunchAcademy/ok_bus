@@ -1,0 +1,9 @@
+<h1>Buses</h1>
+
+<% @buses.each do |bus| %>
+  <ul>
+    <li>
+      <%= link_to bus.number, bus_path(bus) %> - <%= bus.inbound %> - <%= bus.outbound %>
+    </li>
+  </ul>
+<% end %>
