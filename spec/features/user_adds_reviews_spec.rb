@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "User views reviews", %Q{
+feature "User views reviews", %{
   As a user
   I want to add a review
   So that I can provide other users
@@ -32,10 +32,10 @@ feature "User views reviews", %Q{
 
     review = Review.new(review_attrs)
 
-    fill_in 'Bus line number', with: review.bus
-    select review.rating, from: 'review[rating]'
+    fill_in "Bus line number", with: review.bus
+    select review.rating, from: "review[rating]"
 
-    click_button 'Create Rating'
+    click_button "Create Rating"
 
     expect(page).to have_content "Review successfully created."
   end
@@ -46,9 +46,9 @@ feature "User views reviews", %Q{
 
     visit bus_path(bus.id)
 
-    select rand(1..5), from: 'review[rating]'
+    select rand(1..5), from: "review[rating]"
 
-    click_on 'Create Review'
+    click_on "Create Review"
 
     expect(page).to have_content "can't be blank"
   end
@@ -59,9 +59,9 @@ feature "User views reviews", %Q{
 
     visit bus_path(bus.id)
 
-    fill_in 'Bus line number', with: bus.number
+    fill_in "Bus line number", with: bus.number
 
-    click_on 'Create Review'
+    click_on "Create Review"
 
     expect(page).to have_content "can't be blank"
   end
