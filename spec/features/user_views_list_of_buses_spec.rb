@@ -29,4 +29,3 @@ feature "User views list of buses", %{
     expect(page).to have_content bus.outbound
   end
 end
-
