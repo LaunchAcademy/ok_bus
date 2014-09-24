@@ -24,9 +24,9 @@ feature "User adds a review", %{
     ride = FactoryGirl.create(:ride)
     bus = ride.bus
 
-    visit new_bus_review_path(bus)
+    visit new_bus_review_path(bus.id)
 
-    review_attrs = { ride_id: ride.id,rating: rand(1..5),
+    review_attrs = { ride_id: ride.id, rating: rand(1..5),
       body: Faker::Lorem.sentence }
 
     review = Review.new(review_attrs)
