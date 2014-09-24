@@ -2,7 +2,4 @@
 
 <h2><%= @bus.inbound %> - <%= @bus.outbound %></h2>
 
-<a href="<%= edit_review_path(review) %>" class="button">Edit Review</a>
-  <% if review.user_id == session[:user_id] %>
-  <a href="<%= edit_review_path(review) %>" class="button">Edit Review</a>
-  <% end %>
+
