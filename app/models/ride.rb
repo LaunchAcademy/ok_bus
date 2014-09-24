@@ -26,7 +26,7 @@ class Ride < ActiveRecord::Base
             presence: true,
             uniqueness: { scope: [:timeframe, :day, :direction] }
 
-  def ride_with_description
-    "#{ride.timeframe} - #{ride.direction} - #{ride.day}"
+  def description
+    "#{timeframe} - #{direction} - #{day}"
   end
 end
