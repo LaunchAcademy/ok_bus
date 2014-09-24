@@ -12,18 +12,22 @@ feature "User views all reviews for bus", %{
     expect(page).to have_content review.body
   end
 
-  scenario "only see reviews associated with bus"
+  scenario "only see reviews associated with bus" do
+    review1 = FactoryGirl.create(:review)
+    review2 = FactoryGirl.create(:review)
+  end
 
   scenario "reviews are in order with most recent first" do
     review1 = FactoryGirl.create(:review)
     review2 = FactoryGirl.create(:review, ride: review1.ride)
     bus = review1.ride.bus
     visit bus_path(bus)
+    save_and_open_page
 
     if review1.created_at > review2.created_at
-      expect(review1.body).to appear_before review2.body
+      expect(review1.user.username).to appear_before review2.user.username
     else
-      expect(review2.body).to appear_before review1.body
+      expect(review2.user.username).to appear_before review1.user.username
     end
   end
 
