@@ -44,22 +44,6 @@ feature "User adds a review", %{
     expect(page).to have_content "Review successfully created."
   end
 
-  scenario "creating review fails without bus line number" do
-    user = FactoryGirl.create(:user)
-    sign_in_as(user)
-
-    ride = FactoryGirl.create(:ride)
-    bus = ride.bus
-
-    visit bus_path(bus.id)
-
-    select rand(1..5), from: "review[rating]"
-
-    click_on "Create Review"
-
-    expect(page).to have_content "can't be blank"
-  end
-
   scenario "creating review fails without rating" do
     user = FactoryGirl.create(:user)
     sign_in_as(user)
@@ -67,9 +51,9 @@ feature "User adds a review", %{
     ride = FactoryGirl.create(:ride)
     bus = ride.bus
 
-    visit bus_path(bus.id)
+    visit new_bus_review_path(bus)
 
-    select review.ride.description, from: "review[ride_id]"
+    select ride.description, from: "Ride"
 
     click_on "Create Review"
 
