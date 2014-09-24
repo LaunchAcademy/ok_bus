@@ -7,3 +7,11 @@
     </li>
   </ul>
 <% end %>
+
+<% @users.each do |user| %>
+  <ul>
+    <li>
+      <%= user.username %> - <img src ="<%= user.profile_photo %>">
+    </li>
+  </ul>
+<% end %>

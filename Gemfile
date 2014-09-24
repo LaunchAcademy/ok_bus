@@ -34,6 +34,8 @@ gem 'carrierwave'
 
 gem 'fog'
 
+gem 'mini_magick'
+
 # gem 'carrierwave-aws'
 
 group :development, :test do
