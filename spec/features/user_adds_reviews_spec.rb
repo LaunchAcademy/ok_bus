@@ -24,7 +24,7 @@ feature "User views reviews", %Q{
     ride = FactoryGirl.create(:ride)
     bus = ride.bus
 
-    visit new_review_path(bus.id)
+    visit new_bus_review_path(bus.id)
 
     review_attrs = { bus: bus.number, rating: rand(1..5),
       day: ride.day, direction: ride.direction, timeframe: ride.timeframe,
