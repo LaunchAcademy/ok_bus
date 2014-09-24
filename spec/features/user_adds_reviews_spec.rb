@@ -26,13 +26,13 @@ feature "User views reviews", %Q{
 
     visit new_review_path(bus.id)
 
-    review_attrs = { bus_line_number: bus.line_number, rating: rand(1..5),
+    review_attrs = { bus: bus.number, rating: rand(1..5),
       day: ride.day, direction: ride.direction, timeframe: ride.timeframe,
       body: Faker::Lorem.sentence }
 
     review = Review.new(review_attrs)
 
-    fill_in 'Bus line number', with: review.bus_line_number
+    fill_in 'Bus line number', with: review.bus
     select review.rating, from: 'review[rating]'
 
     click_button 'Create Rating'
@@ -59,7 +59,7 @@ feature "User views reviews", %Q{
 
     visit bus_path(bus.id)
 
-    fill_in 'Bus line number', with: bus.line_number
+    fill_in 'Bus line number', with: bus.number
 
     click_on 'Create Review'
 
