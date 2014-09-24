@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect to bus_path(@bus)
     else
-      render 'new'
+      render "new"
     end
   end
 end
