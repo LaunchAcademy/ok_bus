@@ -112,12 +112,12 @@ feature "User creates an account", %Q{
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
     fill_in "Password confirmation", with: user.password
-    attach_file "Profile photo", 'app/assets/images/sushi.jpg'
+    attach_file "Profile photo", "app/assets/images/sushi.jpg"
 
     within ".new_user" do
       click_on "Sign up"
     end
 
     expect(page).to have_content "Welcome! You have signed up successfully."
-    end
+  end
 end
