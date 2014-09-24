@@ -1,3 +1,20 @@
 <h1>Line <%= @bus.number %></h1>
 
 <h2><%= @bus.inbound %> - <%= @bus.outbound %></h2>
+
+<h3>Reviews:</h3>
+
+<div class="review">
+  <% @reviews.each do |review| %>
+    <% @ride = Ride.find(review.ride_id) %>
+    <p>
+      <%= User.find(review.user_id) %>
+      rode bus <%= @bus.number %>
+      towards <%= @ride.direction %>
+      on a <%= @ride.day %>
+      between <%= @ride.timeframe %>
+    </p>
+    <h3><%= review.rating %> out of 5</h3>
+    <p><%= review.body %></p>
+  <% end %>
+</div>
