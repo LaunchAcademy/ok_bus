@@ -25,4 +25,8 @@ class Ride < ActiveRecord::Base
   validates :bus,
             presence: true,
             uniqueness: { scope: [:timeframe, :day, :direction] }
+
+  def description
+    "#{timeframe} - #{direction} - #{day}"
+  end
 end
