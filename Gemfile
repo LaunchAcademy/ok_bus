@@ -32,6 +32,8 @@ gem 'devise'
 
 gem 'carrierwave'
 
+gem 'fog'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
@@ -39,7 +41,9 @@ group :development, :test do
   gem 'launchy'
   gem 'orderly'
   gem 'factory_girl_rails'
+  gem 'dotenv-rails'
 end
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
