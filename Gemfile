@@ -7,6 +7,8 @@ gem 'rails', '4.1.6'
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
+# Use carrierwave to upload and fetch images hosted in another server
+gem 'carrierwave','0.10.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -37,6 +39,7 @@ group :development, :test do
   gem 'launchy'
   gem 'orderly'
   gem 'factory_girl_rails'
+  gem 'pg'
 end
 
 # Use ActiveModel has_secure_password
