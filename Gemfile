@@ -35,6 +35,7 @@ group :development, :test do
   gem 'capybara'
   gem 'pry-rails'
   gem 'launchy'
+  gem 'factory_girl_rails'
 end
 
 # Use ActiveModel has_secure_password
@@ -48,4 +49,3 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
