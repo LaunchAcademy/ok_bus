@@ -19,45 +19,40 @@ feature "User adds a review", %{
     weekend), and bus direction
   } do
 
-  scenario "review successfully added" do
+  let(:ride) { FactoryGirl.create(:ride) }
+  let(:bus) { ride.bus }
 
-    user = FactoryGirl.create(:user)
-    sign_in_as(user)
+  context "authenticated user" do
+    before :each do
+      @user = FactoryGirl.create(:user)
+      sign_in_as(@user)
+    end
 
-    ride = FactoryGirl.create(:ride)
-    bus = ride.bus
+    scenario "review successfully added" do
+      review = FactoryGirl.build(:review, user: @user, ride: ride)
 
-    visit new_bus_review_path(bus.id)
+      visit new_bus_review_path(bus)
 
-    review_attrs = { user_id: user.id, ride_id: ride.id, rating: rand(1..5),
-      body: Faker::Lorem.sentence }
+      select review.ride.description, from: "review[ride_id]"
+      select review.rating, from: "review[rating]"
 
-    review = Review.new(review_attrs)
+      click_on "Create Review"
 
-    select review.ride.description, from: "review[ride_id]"
-    select review.rating, from: "review[rating]"
+      expect(page).to have_content "Review successfully created."
+    end
 
-    click_on "Create Review"
+    scenario "creating review fails without rating" do
+      visit new_bus_review_path(bus)
 
-    save_and_open_page
+      select ride.description, from: "Ride"
 
-    expect(page).to have_content "Review successfully created."
+      click_on "Create Review"
+
+      expect(page).to have_content "can't be blank"
+    end
   end
 
-  scenario "creating review fails without rating" do
-    user = FactoryGirl.create(:user)
-    sign_in_as(user)
-
-    ride = FactoryGirl.create(:ride)
-    bus = ride.bus
-
-    visit new_bus_review_path(bus)
-
-    select ride.description, from: "Ride"
-
-    click_on "Create Review"
-
-    expect(page).to have_content "can't be blank"
+  context "unauthenticated user" do
+    scenario "user cannot add a review"
   end
-
 end
