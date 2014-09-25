@@ -70,6 +70,8 @@ GEM
     factory_girl_rails (4.4.1)
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     fog (1.23.0)
       fog-brightbox
       fog-core (~> 1.23)
@@ -216,6 +218,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   factory_girl_rails
+  faker
   fog
   foundation-rails (= 5.4.3.0)
   jbuilder (~> 2.0)
