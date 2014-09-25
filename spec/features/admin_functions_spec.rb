@@ -42,7 +42,6 @@ feature "Admin fuctionality", %{
       bus = review1.ride.bus
       sign_in_as(@admin)
       visit bus_path(bus)
-      binding.pry
       expect { click_link "Delete" }.to change(Review, :count).by(-1)
     end
   end
