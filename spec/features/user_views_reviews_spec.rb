@@ -4,14 +4,6 @@ feature "User views all reviews for bus", %{
   As a user I want to view all the reviews for a bus
   So that I can read other people's opinions
   } do
-  scenario "must be on bus detail page" do
-    review = FactoryGirl.create(:review)
-    bus = review.ride.bus
-    visit bus_path(bus)
-    expect(page).to have_content review.rating.to_s + " out of 5"
-    expect(page).to have_content review.body
-  end
-
   scenario "only see reviews associated with bus" do
     review1 = FactoryGirl.create(:review)
     review2 = FactoryGirl.create(:review)
