@@ -37,9 +37,9 @@ group :development, :test do
   gem 'launchy'
   gem 'orderly'
   gem 'factory_girl_rails'
+  gem 'faker'
 end
 
-gem 'faker'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
