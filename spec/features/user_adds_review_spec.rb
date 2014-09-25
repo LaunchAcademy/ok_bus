@@ -56,7 +56,8 @@ feature "User adds a review", %{
     scenario "user cannot add a review" do
       visit new_bus_review_path(bus)
 
-      expect(page).to have_content "You need to sign in or sign up before continuing."
+      expect(page).to have_content
+      "You need to sign in or sign up before continuing."
     end
 
     scenario "user doesn't have access to New Review button" do
