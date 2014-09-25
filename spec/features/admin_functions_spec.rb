@@ -19,6 +19,7 @@ feature "Admin fuctionality", %{
 
     scenario "admin visits user index" do
       sign_in_as(@admin)
+      binding.pry
       visit "/admin/users"
       expect(page).to have_content(@user.email)
     end
