@@ -44,9 +44,8 @@ group :development, :test do
   gem 'orderly'
   gem 'factory_girl_rails'
   gem 'dotenv-rails'
+  gem 'faker'
 end
-
-gem 'faker'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
