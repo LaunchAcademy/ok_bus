@@ -53,6 +53,19 @@ feature "User adds a review", %{
   end
 
   context "unauthenticated user" do
-    scenario "user cannot add a review"
+    scenario "user cannot add a review" do
+      visit new_bus_review_path(bus)
+
+      expect(page).to have_content "You need to sign in or sign up before continuing."
+    end
+
+    scenario "user doesn't have access to New Review button" do
+      review = FactoryGirl.build(:review, ride:ride)
+      visit bus_path(bus)
+
+      save_and_open_page
+
+      expect(page).to_not have_button "New Review"
+    end
   end
 end
