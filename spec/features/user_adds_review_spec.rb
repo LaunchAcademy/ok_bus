@@ -27,10 +27,14 @@ feature "User adds a review", %{
     ride = FactoryGirl.create(:ride)
     bus = ride.bus
 
-    visit new_bus_review_path(bus.id)
+    visit new_bus_review_path(bus)
 
-    review_attrs = { user_id: user.id, ride_id: ride.id, rating: rand(1..5),
-      body: Faker::Lorem.sentence }
+    review_attrs = {
+      user_id: user,
+      ride_id: ride,
+      rating: rand(1..5),
+      body: Faker::Lorem.sentence
+    }
 
     review = Review.new(review_attrs)
 
@@ -38,8 +42,6 @@ feature "User adds a review", %{
     select review.rating, from: "review[rating]"
 
     click_on "Create Review"
-
-    save_and_open_page
 
     expect(page).to have_content "Review successfully created."
   end
