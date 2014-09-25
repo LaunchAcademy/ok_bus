@@ -25,6 +25,7 @@ feature "Admin fuctionality", %{
 
   I must be logged in and identified as an admin
 <<<<<<< HEAD
+<<<<<<< HEAD
 } do
 
 let(:user) { FactoryGirl.create(:user) }
@@ -56,6 +57,11 @@ context "authenticated admin" do
   end
 end
 =======
+=======
+  I can visit an index of users (not accessible by regular users)
+  I can delete a user
+  I can delete a user's review
+>>>>>>> 502adb56e3c970ee25839e8451ab80cbaf231851
   } do
 
   context "authenticated admin" do
