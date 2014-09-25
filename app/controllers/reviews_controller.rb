@@ -30,6 +30,10 @@ class ReviewsController < ApplicationController
       render "edit"
     end
   end
+
+  def destroy
+
+  end
 end
 
 private

@@ -17,5 +17,8 @@
       <h3><%= review.rating %> out of 5</h3>
       <p><%= review.body %></p>
     </li>
+    <%= link_to 'Delete', bus_review_path(@bus, review), method: :delete,
+                                                         data: { confirm:
+                                                                 'Are you sure?' } %>
   <% end %>
 </ul>
