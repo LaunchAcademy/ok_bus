@@ -13,6 +13,11 @@
         towards <%= review.ride.direction %>
         on a <%= review.ride.day %>
         between <%= review.ride.timeframe %>
+        <% if current_user.id == review.user_id %>
+          <%= link_to "Delete", edit_review_path(review), method: :delete %>
+        <% elsif current_user.admin? %>
+          <%= link_to "Delete", edit_review_path(review), method: :delete %>
+        <%end%>
       </p>
       <h3><%= review.rating %> out of 5</h3>
       <p><%= review.body %></p>
