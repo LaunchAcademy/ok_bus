@@ -17,45 +17,36 @@
       </div>
     <% end %>
 
-<form class="row">
+<div class="row">
   <div class="small-9 small-centered columns">
     <%= form_for([@bus, @review]) do |f| %>
-      <div class="row">
-        <div class="large-6 large-centered columns">
-          <label class="left">
-            <%= f.label :ride_id %>
-          </label>
-          <label class="right">
-            <small>required</small>
-          </label>
-          <%= f.collection_select :ride_id, @bus.rides, :id, :description %>
-        </div>
+      <div>
+        <label class="left">
+          <%= f.label :ride_id %>
+        </label>
+        <label class="right">
+          <small>required</small>
+        </label>
+        <%= f.collection_select :ride_id, @bus.rides, :id, :description %>
       </div>
-
-      <div class="row">
-        <div class="large-6 large-centered columns">
-          <label class="left">
-            <%= f.label :rating %>
-          </label>
-          <label class="right">
-            <small>required</small>
-          </label>
-          <%= f.select :rating, (1..5) %>
-        </div>
+      <div>
+        <label class="left">
+          <%= f.label :rating %>
+        </label>
+        <label class="right">
+          <small>required</small>
+        </label>
+        <%= f.select :rating, (1..5) %>
       </div>
-      <div class="row">
-        <div class="large-6 large-centered columns">
-          <label class="left">
-            <%= f.label :body %>
-          </label>
-          <%= f.text_area :body %>
-        </div>
+      <div>
+        <label class="left">
+          <%= f.label :body %>
+        </label>
+        <%= f.text_area :body %>
       </div>
-      <div class="row">
-        <div class="large-3 large-centered columns">
-            <%= f.submit value: 'Create Review', class: 'button' %>
-        </div>
+      <div>
+        <%= f.submit value: 'Create Review', class: 'button' %>
       </div>
     <% end %>
   </div>
-</form>
+</div>
