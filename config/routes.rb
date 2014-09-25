@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :users
+    resources :users, only: [:index, :destroy]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
