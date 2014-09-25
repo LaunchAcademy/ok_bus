@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+
   def new
     @bus = Bus.find(params[:bus_id])
     @rides = @bus.rides
@@ -29,14 +30,22 @@ class ReviewsController < ApplicationController
       render "edit"
     end
   end
-end
+
+  def destroy
+    @review = Review.find(params[:id])
+    @bus = @review.ride.bus
+    @review.destroy
+
+    redirect_to bus_path(@bus)
+  end
 
 private
 
-def review_params
-  params.require(:review).permit(
-    :ride_id,
-    :rating,
-    :body
-  ).merge(user: current_user)
+  def review_params
+    params.require(:review).permit(
+      :ride_id,
+      :rating,
+      :body
+      ).merge(user: current_user)
+  end
 end

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'buses#index'
 
   resources :buses, only: [:index, :show] do
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: [:new, :create, :destroy]
   end
 
   namespace :admin do
