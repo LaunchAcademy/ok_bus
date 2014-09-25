@@ -20,34 +20,18 @@ feature "User adds a review", %{
   } do
 
   let(:ride) { FactoryGirl.create(:ride) }
-  let!(:bus) { ride.bus }
+  let(:bus) { ride.bus }
 
   context "authenticated user" do
     before :each do
-      user = FactoryGirl.create(:user)
+      @user = FactoryGirl.create(:user)
       sign_in_as(@user)
-
-      # ride = FactoryGirl.create(:ride)
-      # bus = @ride.bus
     end
 
-
     scenario "review successfully added" do
-      # review_attrs = {
-      #   user_id: @user,
-      #   ride_id: @ride,
-      #   rating: rand(1..5),
-      #   body: Faker::Lorem.sentence
-      # }
+      review = FactoryGirl.build(:review, user: @user, ride: ride)
 
-      # review = Review.new(review_attrs)
-      review = FactoryGirl.build(
-        :review,
-        user: @user,
-        ride: ride
-        )
-
-      visit new_bus_review_path(@bus.id)
+      visit new_bus_review_path(bus)
 
       select review.ride.description, from: "review[ride_id]"
       select review.rating, from: "review[rating]"
@@ -58,13 +42,7 @@ feature "User adds a review", %{
     end
 
     scenario "creating review fails without rating" do
-      # user = FactoryGirl.create(:user)
-      # sign_in_as(user)
-
-      # ride = FactoryGirl.create(:ride)
-      # bus = ride.bus
-
-      visit new_bus_review_path(@bus.id)
+      visit new_bus_review_path(bus)
 
       select ride.description, from: "Ride"
 
@@ -75,8 +53,6 @@ feature "User adds a review", %{
   end
 
   context "unauthenticated user" do
-    scenario "user cannot add a review" do
-    end
+    scenario "user cannot add a review"
   end
-
 end
