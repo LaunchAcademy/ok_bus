@@ -5,12 +5,11 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def authorize!
-    if current_user.nil? || current_user.admin == 'false'
+    if !current_user.admin?
       flash[:notice] = "You are not authorized to view this resource!"
       redirect_to root_path
     end
   end
-
 
   protected
 
