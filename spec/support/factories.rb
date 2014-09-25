@@ -17,4 +17,11 @@ FactoryGirl.define do
     day "weekday"
     bus
   end
+
+  factory :review do
+    rating { rand(1..5) }
+    body Faker::Lorem.sentence
+    user
+    ride
+  end
 end

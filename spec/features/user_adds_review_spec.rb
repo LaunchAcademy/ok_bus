@@ -19,47 +19,64 @@ feature "User adds a review", %{
     weekend), and bus direction
   } do
 
-  scenario "review successfully added" do
+  let(:ride) { FactoryGirl.create(:ride) }
+  let!(:bus) { ride.bus }
 
-    user = FactoryGirl.create(:user)
-    sign_in_as(user)
+  context "authenticated user" do
+    before :each do
+      user = FactoryGirl.create(:user)
+      sign_in_as(@user)
 
-    ride = FactoryGirl.create(:ride)
-    bus = ride.bus
+      # ride = FactoryGirl.create(:ride)
+      # bus = @ride.bus
+    end
 
-    visit new_bus_review_path(bus)
 
-    review_attrs = {
-      user_id: user,
-      ride_id: ride,
-      rating: rand(1..5),
-      body: Faker::Lorem.sentence
-    }
+    scenario "review successfully added" do
+      # review_attrs = {
+      #   user_id: @user,
+      #   ride_id: @ride,
+      #   rating: rand(1..5),
+      #   body: Faker::Lorem.sentence
+      # }
 
-    review = Review.new(review_attrs)
+      # review = Review.new(review_attrs)
+      review = FactoryGirl.build(
+        :review,
+        user: @user,
+        ride: ride
+        )
 
-    select review.ride.description, from: "review[ride_id]"
-    select review.rating, from: "review[rating]"
+      visit new_bus_review_path(@bus.id)
 
-    click_on "Create Review"
+      select review.ride.description, from: "review[ride_id]"
+      select review.rating, from: "review[rating]"
 
-    expect(page).to have_content "Review successfully created."
+      click_on "Create Review"
+
+      expect(page).to have_content "Review successfully created."
+    end
+
+    scenario "creating review fails without rating" do
+      # user = FactoryGirl.create(:user)
+      # sign_in_as(user)
+
+      # ride = FactoryGirl.create(:ride)
+      # bus = ride.bus
+
+      visit new_bus_review_path(@bus.id)
+
+      select ride.description, from: "Ride"
+
+      click_on "Create Review"
+
+      expect(page).to have_content "can't be blank"
+    end
   end
 
-  scenario "creating review fails without rating" do
-    user = FactoryGirl.create(:user)
-    sign_in_as(user)
-
-    ride = FactoryGirl.create(:ride)
-    bus = ride.bus
-
-    visit new_bus_review_path(bus)
-
-    select ride.description, from: "Ride"
-
-    click_on "Create Review"
-
-    expect(page).to have_content "can't be blank"
+  context "unauthenticated user" do
+    scenario "user cannot add a review" do
+    end
   end
 
 end
