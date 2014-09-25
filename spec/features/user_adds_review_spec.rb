@@ -29,15 +29,7 @@ feature "User adds a review", %{
     end
 
     scenario "review successfully added" do
-      review_attrs = {
-        user: @user,
-        ride: ride,
-        rating: rand(1..5),
-        body: Faker::Lorem.sentence
-      }
-
-      review = Review.new(review_attrs)
-      # review = FactoryGirl.build(:review, user: @user, ride: @ride)
+      review = FactoryGirl.build(:review, user: @user, ride: ride)
 
       visit new_bus_review_path(bus)
 
