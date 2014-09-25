@@ -19,19 +19,19 @@ feature "User adds a review", %{
     weekend), and bus direction
   } do
 
+  let(:ride) { FactoryGirl.create(:ride) }
+  let(:bus) { ride.bus }
+
   context "authenticated user" do
     before :each do
       @user = FactoryGirl.create(:user)
       sign_in_as(@user)
-
-      @ride = FactoryGirl.create(:ride)
-      @bus = @ride.bus
     end
 
     scenario "review successfully added" do
       review_attrs = {
         user: @user,
-        ride: @ride,
+        ride: ride,
         rating: rand(1..5),
         body: Faker::Lorem.sentence
       }
@@ -39,7 +39,7 @@ feature "User adds a review", %{
       review = Review.new(review_attrs)
       # review = FactoryGirl.build(:review, user: @user, ride: @ride)
 
-      visit new_bus_review_path(@bus)
+      visit new_bus_review_path(bus)
 
       select review.ride.description, from: "review[ride_id]"
       select review.rating, from: "review[rating]"
@@ -50,9 +50,9 @@ feature "User adds a review", %{
     end
 
     scenario "creating review fails without rating" do
-      visit new_bus_review_path(@bus)
+      visit new_bus_review_path(bus)
 
-      select @ride.description, from: "Ride"
+      select ride.description, from: "Ride"
 
       click_on "Create Review"
 
