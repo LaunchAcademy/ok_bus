@@ -1,4 +1,9 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!, only: [:new,
+                                            :create,
+                                            :destroy,
+                                            :edit,
+                                            :update]
   def new
     @bus = Bus.find(params[:bus_id])
     @rides = @bus.rides
@@ -31,6 +36,11 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    @review = Review.find(params[:id])
+    @bus = @review.ride.bus
+    @review.destroy
+
+    redirect_to bus_path(@bus)
   end
 end
 

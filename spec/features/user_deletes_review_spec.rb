@@ -15,12 +15,6 @@ feature "User deletes a review", %{
     expect(page).to_not have_content "Delete"
   end
 
-  scenario "must be logged in to delete review" do
-    sign_in_as(@review.user)
-    visit bus_path(@bus)
-    expect(page).to have_content "Delete"
-  end
-
   scenario "only user can delete its own review" do
     user = FactoryGirl.create(:user)
     sign_in_as(user)
@@ -30,8 +24,9 @@ feature "User deletes a review", %{
   scenario "delete review from the bus detail page" do
     sign_in_as(@review.user)
     visit bus_path(@bus)
-    click_on "Delete"
+    expect { click_link "Delete" }.to change(Review, :count).by(-1)
   end
 
   scenario "deleting a review deletes all associated votes"
+    #needs votes model
 end
