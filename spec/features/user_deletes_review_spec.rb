@@ -28,5 +28,4 @@ feature "User deletes a review", %{
   end
 
   scenario "deleting a review deletes all associated votes"
-    #needs votes model
 end
