@@ -8,6 +8,9 @@ feature "Admin fuctionality", %{
   Acceptance Criteria:
 
   I must be logged in and identified as an admin
+  I can visit an index of users (not accessible by regular users)
+  I can delete a user
+  I can delete a user's review
   } do
 
   context "authenticated admin" do
