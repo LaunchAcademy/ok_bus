@@ -5,17 +5,17 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def authorize!
-    if !current_user.admin?
+    if current_user.nil? || !current_user.admin?
       flash[:notice] = "You must be an admin to access this!"
       redirect_to root_path
     end
   end
-
-  def check_user!
-    @review = Review.find(params[id])
-    if current_user.id == @review.user_id || current_user.admin?
-    end
-  end
+  #
+  # def check_user!
+  #   @review = Review.find(params[id])
+  #   if current_user.id == @review.user_id || current_user.admin?
+  #   end
+  # end
 
   protected
 

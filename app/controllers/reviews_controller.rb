@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :authorize!, only: [:destroy]
 
   def new
     @bus = Bus.find(params[:bus_id])
@@ -35,7 +36,6 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @bus = @review.ride.bus
     @review.destroy
-
     redirect_to bus_path(@bus)
   end
 

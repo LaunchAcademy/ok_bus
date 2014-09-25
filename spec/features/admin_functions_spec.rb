@@ -39,10 +39,15 @@ feature "Admin fuctionality", %{
 
     scenario "admin can delete another user's review" do
       review1 = FactoryGirl.create(:review)
+      prev_count = Review.count
+
       bus = review1.ride.bus
       sign_in_as(@admin)
       visit bus_path(bus)
-      expect { click_link "Delete" }.to change(Review, :count).by(-1)
+      click_on "Delete"
+      expect(Review.count).to eq prev_count - 1
+
+      # expect { click_link "Delete" }.to change(Review, :count).by(-1)
     end
   end
 end
