@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     # @review.user_id = session[:user_id]
 
     if @review.save
-      redirect_to bus_path(@bus), notice: 'Review successfully created.'
+      redirect_to bus_path(@bus), notice: "Review successfully created."
     else
       render "new"
     end
@@ -35,5 +35,8 @@ end
 private
 
 def review_params
-  params.require(:review).permit(:ride_id, :rating, :body).merge(user: current_user)
+  params.require(:review).permit(:ride_id,
+                                 :rating,
+                                 :body
+                                 ).merge(user: current_user)
 end
