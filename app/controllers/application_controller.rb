@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def authorize!
     if !current_user.admin?
-      flash[:notice] = "You are not authorized to view this resource!"
+      flash[:notice] = "You must be an admin to access this!"
       redirect_to root_path
     end
   end

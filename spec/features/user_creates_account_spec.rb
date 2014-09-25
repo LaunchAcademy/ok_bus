@@ -38,6 +38,7 @@ feature "User creates an account", %Q{
     click_on "Sign up"
 
     within ".new_user" do
+      save_and_open_page
       click_on "Sign up"
     end
 
