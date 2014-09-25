@@ -2,4 +2,20 @@
 
 <h2><%= @bus.inbound %> - <%= @bus.outbound %></h2>
 
+<h3>Reviews:</h3>
 
+<ul>
+  <% @reviews.each do |review| %>
+    <li>
+      <p>
+        <%= review.user.username %>
+        rode bus <%= @bus.number %>
+        towards <%= review.ride.direction %>
+        on a <%= review.ride.day %>
+        between <%= review.ride.timeframe %>
+      </p>
+      <h3><%= review.rating %> out of 5</h3>
+      <p><%= review.body %></p>
+    </li>
+  <% end %>
+</ul>
