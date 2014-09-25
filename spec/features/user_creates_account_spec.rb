@@ -12,6 +12,7 @@ feature "User creates an account", %Q{
    If my email address is already in use, I receive an error message.
    If password does not match password confirmation, I receive an error message.
    I must not be logged in to create an account.
+   I can optionally upload a profile photo.
   } do
 
   scenario "with required information" do
@@ -100,5 +101,23 @@ feature "User creates an account", %Q{
 
     # make sure Sign Up button isn't on page
     expect(page).to_not have_content "Sign up"
+  end
+
+  scenario "user uploads a photo" do
+    user = FactoryGirl.build(:user)
+    visit root_path
+    click_on "Sign up"
+
+    fill_in "Username", with: user.username
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    fill_in "Password confirmation", with: user.password
+    attach_file "Profile photo", "app/assets/images/sushi.jpg"
+
+    within ".new_user" do
+      click_on "Sign up"
+    end
+
+    expect(page).to have_content "Welcome! You have signed up successfully."
   end
 end
