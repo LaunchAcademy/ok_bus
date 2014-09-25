@@ -34,7 +34,9 @@ feature "Admin fuctionality", %{
     scenario "admin deletes another user's account" do
       sign_in_as(@admin)
       visit "/admin/users"
+      prev_count = User.count
       first(:link, "Delete").click
+      expect(User.count).to eq prev_count - 1
     end
 
     scenario "admin can delete another user's review" do
@@ -46,8 +48,6 @@ feature "Admin fuctionality", %{
       visit bus_path(bus)
       click_on "Delete"
       expect(Review.count).to eq prev_count - 1
-
-      # expect { click_link "Delete" }.to change(Review, :count).by(-1)
     end
   end
 end
