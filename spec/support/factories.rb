@@ -12,17 +12,10 @@ FactoryGirl.define do
   end
 
   factory :ride do
-    bus
     timeframe "9AM-12PM"
     direction "inbound"
     day "weekday"
-  end
-
-  factory :review do
-    ride
-    user
-    rating { rand(1..5) }
-    body Faker::Lorem.sentence
+    bus
   end
 
   factory :review do
