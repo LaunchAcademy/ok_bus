@@ -24,4 +24,11 @@ FactoryGirl.define do
     rating { rand(1..5) }
     body Faker::Lorem.sentence
   end
+
+  factory :review do
+    rating { rand(1..5) }
+    body Faker::Lorem.sentence
+    user
+    ride
+  end
 end

@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :rating %><br>
-    <%= f.select :rating, (1..5) %>
+    <%= f.select :rating, (1..5), include_blank: true %>
   </div>
   <div class="field">
     <%= f.label :body %><br>
