@@ -9,7 +9,9 @@ context "authenticated admin" do
     @admin.update_attribute :admin,true
     sign_in_as(@admin)
   end
-
+  scenario "admin is logged in as an admin" do
+    @admin.admin?
+  end
   scenario "admin deletes someone else's review" do
 
 
