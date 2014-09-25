@@ -1,23 +1,33 @@
-<h1 class="text-center">Line <%= @bus.number %></h1>
-<h3 class="text-center subheader">
-  <%= @bus.inbound %><br>
-  <%= @bus.outbound %>
-</h3>
+<div class="row">
+  <div class="small-2 column">
+    <h1 class="text-right"><%= @bus.number %></h1>
+  </div>
+  <div class="small-10 column">
+    <h3 class="text-left subheader">
+      <%= @bus.inbound %><br>
+      <%= @bus.outbound %>
+    </h3>
+  </div>
+</div>
+<div class="row">
+    <%= link_to "Add Review", new_bus_review_path(@bus), class: "button expand" %>
+</div>
 
 <div class="row">
-  <h2>Reviews</h2>
   <ul class="no-bullet">
     <% @reviews.each do |review| %>
       <li>
-      <hr>
       <div class="row">
-        <div class="small-1 column">
-          <ul><li>Vote</li></ul>
+        <div class="small-2 column">
+          <ul>
+            <li>
+              <a class="clearing-thumbs">
+              <img src=<%= review.user.profile_photo %>>
+              </a>
+            </li>
+          </ul>
         </div>
-        <div class="small-3 column">
-          <h3 class="text-center"><%= review.rating %> out of 5</h3>
-        </div>
-        <div class="small-6 column">
+        <div class="small-8 column">
           <p>
             <%= review.user.username.upcase %>
             rode bus <%= @bus.number %>
@@ -25,18 +35,26 @@
             on a <%= review.ride.day %>
             between <%= review.ride.timeframe %>
           </p>
+          <p><%= review.rating %> out of 5</p>
           <p><%= review.body %></p>
         </div>
         <div class="small-2 column">
-          <ul><li>Delete</li><li>Edit</li></ul>
+          <ul>
+            <li>
+              <% if current_user == review.user %>
+                <%= link_to 'Delete',
+                    bus_review_path(@bus, review),
+                    method: :delete,
+                    data: { confirm:
+                            'Are you sure?'
+                            } %>
+              <% end %>
+            </li>
+          </ul>
         </div>
       </div>
+      <hr>
       </li>
     <% end %>
   </ul>
-  <hr>
-</div>
-
-<div class="row">
-  <%= link_to "Review This Bus", new_bus_review_path(@bus), class: "button" %>
 </div>
