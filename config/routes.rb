@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'buses#index'
 
+  namespace :admin do
+    resources :users, only: [:index, :destroy]
+  end
+
   resources :buses, only: [:index, :show] do
     resources :reviews, only: [:new, :create, :edit]
   end
