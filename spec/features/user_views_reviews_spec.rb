@@ -24,10 +24,10 @@ feature "User views all reviews for bus", %{
     visit bus_path(bus)
     if review1.created_at > review2.created_at
       expect(review1.user.username.upcase).to appear_before
-                                              review2.user.username.upcase
+        review2.user.username.upcase
     else
       expect(review2.user.username.upcase).to appear_before
-                                              review1.user.username.upcase
+        review1.user.username.upcase
     end
   end
 
