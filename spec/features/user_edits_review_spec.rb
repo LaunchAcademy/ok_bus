@@ -19,18 +19,20 @@ feature "User edits a review", %{
     let(:ride) { review.ride }
     let(:bus) { ride.bus }
 
-  scenario "edit review from the bus detail page" do
-    sign_in_as(review.user)
-    save_and_open_page
-    visit bus_path(bus)
-    expect(page).to have_content "Edit"
-  end
+  context "authenticated user" do
+    scenario "edit review from the bus detail page" do
+      sign_in_as(review.user)
+      save_and_open_page
+      visit bus_path(bus)
+      expect(page).to have_content "Edit"
+    end
 
-  scenario "only user can edit his/her own review" do
-    visit bus_path(bus)
-    user = FactoryGirl.create(:user)
-    sign_in_as(user)
-    expect(page).to_not have_content "Edit"
+    scenario "only user can edit his/her own review" do
+      visit bus_path(bus)
+      user = FactoryGirl.create(:user)
+      sign_in_as(user)
+      expect(page).to_not have_content "Edit"
+    end
   end
 
   context "unauthenticated user" do
