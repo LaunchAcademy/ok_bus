@@ -7,6 +7,11 @@
 <ul>
   <% @reviews.each do |review| %>
     <li id="<%= "review-#{review.id}" %>">
+      <ul>
+        <li>Vote:</li>
+        <li>Up</li>
+        <li>Down</li>
+      </ul>
       <p>
         <%= review.user.username %>
         rode bus <%= @bus.number %>
