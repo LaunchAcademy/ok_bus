@@ -13,18 +13,17 @@
         towards <%= review.ride.direction %>
         on a <%= review.ride.day %>
         between <%= review.ride.timeframe %>
-        <% if current_user.admin? %>
-          <%= link_to "Delete", bus_review_path(@bus, review), method: :delete %>
-        <%end%>
       </p>
       <h3><%= review.rating %> out of 5</h3>
       <p><%= review.body %></p>
     </li>
-    <% if current_user == review.user %>
-      <%= link_to 'Delete', bus_review_path(@bus, review), method: :delete,
+    <% if !current_user.nil? %>
+      <% if current_user == review.user || current_user.admin? %>
+        <%= link_to 'Delete', bus_review_path(@bus, review), method: :delete,
                                                            data: { confirm:
                                                                    'Are you sure?'
                                                                     } %>
+      <% end %>
     <% end %>
   <% end %>
 </ul>
@@ -32,4 +31,3 @@
   <% if user_signed_in? %>
     <%= link_to "New Review", new_bus_review_path(@bus) %>
   <% end %>
-
