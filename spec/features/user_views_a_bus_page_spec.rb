@@ -1,3 +1,5 @@
+require "rails_helper"
+
 feature "User views list of buses", %{
   As a user I want to view a bus page
   So that I can see the bus' information
