@@ -13,17 +13,30 @@
 
   <body>
 
-    <ul>
-      <% if !current_user %>
-        <li><%= link_to "Sign in", new_user_session_path %></li>
-        <li><%= link_to "Sign up", new_user_registration_path %></li>
-      <% else %>
-        <% if current_user.admin? %>
-          <li><%= link_to "View Users", admin_users_path %></li>
-        <% end %>
-        <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-      <% end %>
+<div class="sticky">
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="/">OK Bus</a></h1>
+      </li>
     </ul>
+
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <% if !current_user %>
+          <li><%= link_to "Sign in", new_user_session_path %></li>
+          <li><%= link_to "Sign up", new_user_registration_path %></li>
+        <% else %>
+          <% if current_user.admin? %>
+            <li><%= link_to "View Users", admin_users_path %></li>
+          <% end %>
+          <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+        <% end %>
+      </ul>
+    </section>
+  </nav>
+</div>
 
     <% if notice %>
       <p class="notice"><%= notice %></p>
