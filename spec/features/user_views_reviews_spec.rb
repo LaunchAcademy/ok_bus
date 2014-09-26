@@ -11,9 +11,9 @@ feature "User views all reviews for bus", %{
     visit bus_path(bus)
 
     if review2.ride.bus == bus
-      expect(page).to have_content review2.user.username
+      expect(page).to have_content review2.user.username.upcase
     else
-      expect(page).to_not have_content review2.user.username
+      expect(page).to_not have_content review2.user.username.upcase
     end
   end
 
@@ -22,11 +22,12 @@ feature "User views all reviews for bus", %{
     review2 = FactoryGirl.create(:review, ride: review1.ride)
     bus = review1.ride.bus
     visit bus_path(bus)
-
     if review1.created_at > review2.created_at
-      expect(review1.user.username).to appear_before review2.user.username
+      expect(review1.user.username.upcase).to appear_before
+        review2.user.username.upcase
     else
-      expect(review2.user.username).to appear_before review1.user.username
+      expect(review2.user.username.upcase).to appear_before
+        review1.user.username.upcase
     end
   end
 
