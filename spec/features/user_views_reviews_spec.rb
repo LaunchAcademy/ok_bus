@@ -22,12 +22,12 @@ feature "User views all reviews for bus", %{
     review2 = FactoryGirl.create(:review, ride: review1.ride)
     bus = review1.ride.bus
     visit bus_path(bus)
+    user1 = review1.user.username.upcase
+    user2 = review2.user.username.upcase
     if review1.created_at > review2.created_at
-      expect(review1.user.username.upcase).to appear_before
-        review2.user.username.upcase
+      expect(user1).to appear_before user2
     else
-      expect(review2.user.username.upcase).to appear_before
-        review1.user.username.upcase
+      expect(user2).to appear_before user1
     end
   end
 
