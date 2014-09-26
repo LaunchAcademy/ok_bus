@@ -49,8 +49,7 @@ feature "User edits a review", %{
     scenario "user cannot edit a review" do
       visit edit_bus_review_path(bus, review)
 
-      expect(page).to have_content
-      "You need to sign in or sign up before continuing."
+      expect(page).to have_content "You need to sign in or sign up before continuing."
     end
 
     scenario "cannot delete review if not logged in" do
