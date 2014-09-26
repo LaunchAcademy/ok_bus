@@ -22,16 +22,26 @@ feature "User edits a review", %{
   context "authenticated user" do
     scenario "edit review from the bus detail page" do
       sign_in_as(review.user)
-      save_and_open_page
       visit bus_path(bus)
       expect(page).to have_content "Edit"
     end
 
     scenario "only user can edit his/her own review" do
-      visit bus_path(bus)
       user = FactoryGirl.create(:user)
       sign_in_as(user)
+      visit bus_path(bus)
       expect(page).to_not have_content "Edit"
+    end
+
+    scenario "edit review from the bus detail page" do
+      sign_in_as(review.user)
+      visit bus_path(bus)
+      click_on "Edit"
+      fill_in "Body", with: "Some new text"
+      click_on "Submit"
+
+      expect(page).to have_content "Review successfully updated."
+      expect(page).to have_content "Some new text"
     end
   end
 
