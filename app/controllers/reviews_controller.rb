@@ -40,6 +40,7 @@ class ReviewsController < ApplicationController
     redirect_to bus_path(@bus)
   end
 
+
 private
 
   def review_params
