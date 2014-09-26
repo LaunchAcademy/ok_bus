@@ -23,6 +23,12 @@
                                           } %>
        <% end %>
     </li>
+    <% if current_user == review.user %>
+      <%= link_to 'Delete', bus_review_path(@bus, review), method: :delete,
+                                                           data: { confirm:
+                                                                   'Are you sure?'
+                                                                    } %>
+    <% end %>
   <% end %>
 </ul>
 

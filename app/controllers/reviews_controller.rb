@@ -31,6 +31,14 @@ class ReviewsController < ApplicationController
       render "edit"
     end
   end
+
+  def destroy
+    @review = Review.find(params[:id])
+    @bus = @review.ride.bus
+    @review.destroy
+
+    redirect_to bus_path(@bus)
+  end
 end
 
 private

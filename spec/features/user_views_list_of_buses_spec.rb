@@ -1,3 +1,5 @@
+require "rails_helper"
+
 feature "User views list of buses", %{
   As a user I want to see a list of buses
   So that I can select one to read and post reviews
