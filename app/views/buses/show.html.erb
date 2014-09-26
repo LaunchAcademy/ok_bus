@@ -9,9 +9,14 @@
     <li id="<%= "review-#{review.id}" %>">
       <ul>
         <% if user_signed_in? %>
-          <li>Vote:</li>
-          <li>Up</li>
-          <li>Down</li>
+          <li class="upvote">
+            <%= link_to 'Up', bus_review_votes_path(@bus, review, "up"), method: :create %>
+            <%= review.up_votes %> votes
+          </li>
+          <li class="downvote">
+            <%= link_to 'Down', bus_review_votes_path(@bus, review, "up"), method: :create %>
+            <%= review.down_votes %> votes
+          </li>
         <% end %>
       </ul>
       <p>
