@@ -5,28 +5,38 @@ feature "User deletes a review", %{
   to delete my review
   So that I can fix mistakes.
   } do
-  before :each do
-    @review = FactoryGirl.create(:review)
-    @bus = @review.ride.bus
-    visit bus_path(@bus)
+  let(:review) { FactoryGirl.create(:review) }
+  let(:bus) { review.ride.bus }
+
+  context "unauthenticated user" do
+    before :each do
+      visit bus_path(bus)
+    end
+
+    scenario "cannot delete review if not logged in" do
+      expect(page).to_not have_content "Delete"
+    end
+
+    scenario "only user can delete its own review" do
+      user = FactoryGirl.create(:user)
+      sign_in_as(user)
+      expect(page).to_not have_content "Delete"
+    end
   end
 
-  scenario "cannot delete review if not logged in" do
-    expect(page).to_not have_content "Delete"
-  end
+  context "authenticated user" do
+    before :each do
+      FactoryGirl.create(:vote, review: review)
+      sign_in_as(review.user)
+      visit bus_path(bus)
+    end
 
-  scenario "only user can delete its own review" do
-    user = FactoryGirl.create(:user)
-    sign_in_as(user)
-    expect(page).to_not have_content "Delete"
-  end
+    scenario "delete review from the bus detail page" do
+      expect { click_link "Delete" }.to change(Review, :count).by(-1)
+    end
 
-  scenario "delete review from the bus detail page" do
-    sign_in_as(@review.user)
-    visit bus_path(@bus)
-    expect { click_link "Delete" }.to change(Review, :count).by(-1)
+    scenario "deleting a review deletes all associated votes" do
+      expect { click_link "Delete" }.to change(Vote, :count)
+    end
   end
-
-  scenario "deleting a review deletes all associated votes"
-    #needs votes model
 end
