@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authorize!, only: [:destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def new
     @bus = Bus.find(params[:bus_id])

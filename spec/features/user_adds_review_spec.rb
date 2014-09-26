@@ -31,7 +31,8 @@ feature "User adds a review", %{
     scenario "review successfully added" do
       review = FactoryGirl.build(:review, user: @user, ride: ride)
 
-      visit new_bus_review_path(bus)
+      visit bus_path(bus)
+      click_on "New Review"
 
       select review.ride.description, from: "review[ride_id]"
       select review.rating, from: "review[rating]"
@@ -42,7 +43,8 @@ feature "User adds a review", %{
     end
 
     scenario "creating review fails without rating" do
-      visit new_bus_review_path(bus)
+      visit bus_path(bus)
+      click_on "New Review"
 
       select ride.description, from: "Ride"
 
@@ -53,6 +55,16 @@ feature "User adds a review", %{
   end
 
   context "unauthenticated user" do
-    scenario "user cannot add a review"
+    scenario "user cannot add a review" do
+      visit new_bus_review_path(bus)
+
+      expect(page).to have_content
+      "You need to sign in or sign up before continuing."
+    end
+
+    scenario "user doesn't have access to New Review button" do
+      visit bus_path(bus)
+      expect(page).to_not have_button "New Review"
+    end
   end
 end
