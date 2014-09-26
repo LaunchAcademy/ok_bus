@@ -61,11 +61,7 @@ feature "User adds a review", %{
     end
 
     scenario "user doesn't have access to New Review button" do
-      review = FactoryGirl.build(:review, ride:ride)
       visit bus_path(bus)
-
-      save_and_open_page
-
       expect(page).to_not have_button "New Review"
     end
   end
