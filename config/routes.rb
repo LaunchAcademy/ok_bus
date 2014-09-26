@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   root to: 'buses#index'
 
   resources :buses, only: [:index, :show] do
-    resources :reviews
+    resources :reviews, only: [:new, :create, :edit]
   end
+
+  resources :reviews, only: [:update, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
