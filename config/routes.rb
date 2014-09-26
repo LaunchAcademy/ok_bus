@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :buses, only: [:index, :show] do
     resources :reviews, only: [:new, :create, :show, :destroy] do
-      resources :votes, only: [:create, :edit]
+      resources :votes, only: [:create]
     end
   end
 
