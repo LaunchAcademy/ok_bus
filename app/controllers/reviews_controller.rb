@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
 
     if @review.update(review_params)
-      redirect_to @review
+      redirect_to @review, notice: "Review successfully updated."
     else
       render "edit"
     end
@@ -36,8 +36,9 @@ end
 private
 
 def review_params
-  params.require(:review).permit(:ride_id,
-                                 :rating,
-                                 :body
-                                 ).merge(user: current_user)
+  params.require(:review).permit(
+    :ride_id,
+    :rating,
+    :body
+  ).merge(user: current_user)
 end

@@ -19,3 +19,8 @@
     </li>
   <% end %>
 </ul>
+
+  <% if user_signed_in? %>
+    <%= link_to "New Review", new_bus_review_path(@bus) %>
+  <% end %>
+

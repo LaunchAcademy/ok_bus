@@ -11,3 +11,7 @@ The OKBus team consists of:
 
 
 ![ER Diagram](/ok_bus_er.png)
+
+note: must have imagemagick installed to process images properly,
+this can be installed with the command: 'brew install imagemagick'
+in your terminal
