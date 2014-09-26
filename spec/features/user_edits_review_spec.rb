@@ -15,26 +15,19 @@ feature "User edits a review", %{
   bus details page
   } do
 
-    let(:ride) { FactoryGirl.create(:ride) }
+    let(:review) { FactoryGirl.create(:review) }
+    let(:ride) { review.ride }
     let(:bus) { ride.bus }
-    let(:review) {FactoryGirl.create(:review)}
-
-  before :each do
-    visit bus_path(bus)
-  end
 
   scenario "edit review from the bus detail page" do
     sign_in_as(review.user)
-    visit bus_path(bus)
     save_and_open_page
+    visit bus_path(bus)
     expect(page).to have_content "Edit"
   end
 
-  scenario "cannot delete review if not logged in" do
-    expect(page).to_not have_content "Edit"
-  end
-
   scenario "only user can edit his/her own review" do
+    visit bus_path(bus)
     user = FactoryGirl.create(:user)
     sign_in_as(user)
     expect(page).to_not have_content "Edit"
@@ -42,10 +35,15 @@ feature "User edits a review", %{
 
   context "unauthenticated user" do
     scenario "user cannot edit a review" do
-      visit edit_bus_review_path(bus)
+      visit edit_bus_review_path(bus, review)
 
       expect(page).to have_content
       "You need to sign in or sign up before continuing."
+    end
+
+    scenario "cannot delete review if not logged in" do
+      visit bus_path(bus)
+      expect(page).to_not have_content "Edit"
     end
   end
 end
