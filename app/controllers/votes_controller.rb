@@ -5,8 +5,8 @@ class VotesController < ApplicationController
     @review = Review.find(params[:review_id])
     @bus = @review.ride.bus
     @vote = Vote.new(review_id: params[:review_id],
-                      direction: params[:direction],
-                      user_id: current_user.id
+                     direction: params[:direction],
+                     user_id: current_user.id
                      )
     if @vote.save
       redirect_to bus_path(@bus), notice: "Voted!"

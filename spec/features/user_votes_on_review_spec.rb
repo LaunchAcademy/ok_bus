@@ -14,9 +14,7 @@ feature "User votes on a review", %{
     @user = FactoryGirl.create(:user)
     sign_in_as(@user)
     visit bus_path(@bus)
-    within("#review-#{@review.id}") { expect
-                                      { click_link "Up" }.to change(Vote,
-                                                                    :count).by(1) }
+    within("#review-#{@review.id}") { expect { click_link "Up" }.to change(Vote, :count).by(1) }
   end
 
   scenario "must be logged on to vote" do
