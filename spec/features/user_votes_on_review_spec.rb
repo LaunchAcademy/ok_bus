@@ -15,8 +15,12 @@ feature "User votes on a review", %{
     sign_in_as(@user)
     visit bus_path(@bus)
     save_and_open_page
-    within("#review-#{@review.id}") { click_on "Up" }
-    within("#review-#{@review.id}") { click_on "Down" }
+    within("#review-#{@review.id}") {
+      expect(click_on "Up").to change(@review.up_votes).by(1)
+     }
+    within("#review-#{@review.id}") {
+      expect(click_on "Up").to change(@review.down_votes).by(1)
+     }
   end
 
   scenario "must be logged on to vote" do
