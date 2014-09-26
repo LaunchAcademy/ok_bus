@@ -21,6 +21,6 @@
 </ul>
 
   <% if user_signed_in? %>
-    <%= button_to "New Review", new_bus_review_path(@bus) %>
+    <%= link_to "New Review", new_bus_review_path(@bus) %>
   <% end %>
 

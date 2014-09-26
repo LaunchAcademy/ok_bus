@@ -31,7 +31,8 @@ feature "User adds a review", %{
     scenario "review successfully added" do
       review = FactoryGirl.build(:review, user: @user, ride: ride)
 
-      visit new_bus_review_path(bus)
+      visit bus_path(bus)
+      click_on "New Review"
 
       select review.ride.description, from: "review[ride_id]"
       select review.rating, from: "review[rating]"
@@ -42,7 +43,8 @@ feature "User adds a review", %{
     end
 
     scenario "creating review fails without rating" do
-      visit new_bus_review_path(bus)
+      visit bus_path(bus)
+      click_on "New Review"
 
       select ride.description, from: "Ride"
 
