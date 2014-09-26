@@ -10,17 +10,11 @@
       <ul>
         <% if user_signed_in? %>
           <li class="upvote">
-            <%= link_to 'Up', bus_review_votes_path(@bus,
-                                                    review,
-                                                    direction: "up"
-                                                    ), method: :POST %>
+            <%= change_or_vote(@bus, review, "Up") %>
             <%= review.up_votes %> votes
           </li>
           <li class="downvote">
-            <%= link_to 'Down', bus_review_votes_path(@bus,
-                                                      review,
-                                                      direction: "down"
-                                                      ), method: :POST %>
+            <%= change_or_vote(@bus, review, "Down") %>
             <%= review.down_votes %> votes
           </li>
         <% end %>
