@@ -1,6 +1,5 @@
 <h1>Edit Review</h1>
-<p>(or <%= link_to "Delete", bus_review_path(@review),
-                  method: :delete, data: { confirm: "Are you sure?" } %>)</p>
+<p><%= link_to "Delete", bus_review_path(@bus, review), method: :delete, data: { confirm: "Are you sure?" } %></p>
 
 <%= form_for :review, url: bus_review_path(@review), method: :patch do |f| %>
   <% if @review.errors.any? %>
