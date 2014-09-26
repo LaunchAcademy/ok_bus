@@ -43,7 +43,7 @@
         <div class="small-2 column">
           <ul>
             <li>
-              <% if current_user == review.user %>
+              <% if current_user == review.user || current_user.admin? %>
                 <%= link_to 'Delete',
                     bus_review_path(@bus, review),
                     method: :delete,
