@@ -35,7 +35,7 @@
         <label class="right">
           <small>required</small>
         </label>
-        <%= f.select :rating, (1..5) %>
+        <%= f.select :rating, (1..5), include_blank: true %>
       </div>
       <div>
         <label class="left">
