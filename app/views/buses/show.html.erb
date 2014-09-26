@@ -6,7 +6,7 @@
 
 <ul>
   <% @reviews.each do |review| %>
-    <li id="review-<%= review.id.to_s %>">
+    <li id="<%= "review-#{review.id}" %>">
       <p>
         <%= review.user.username %>
         rode bus <%= @bus.number %>

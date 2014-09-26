@@ -13,8 +13,10 @@ feature "User votes on a review", %{
   scenario "vote added to up vote count" do
     @user = FactoryGirl.create(:user)
     sign_in_as(@user)
-    within("#review-#{@review.id}") { click_on "Up Vote" }
-    within("#review-#{@review.id}") { click_on "Down Vote" }
+    visit bus_path(@bus)
+    save_and_open_page
+    within("#review-#{@review.id}") { click_on "Up" }
+    within("#review-#{@review.id}") { click_on "Down" }
   end
 
   scenario "must be logged on to vote" do
