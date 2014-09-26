@@ -8,9 +8,11 @@
   <% @reviews.each do |review| %>
     <li id="<%= "review-#{review.id}" %>">
       <ul>
-        <li>Vote:</li>
-        <li>Up</li>
-        <li>Down</li>
+        <% if user_signed_in? %>
+          <li>Vote:</li>
+          <li>Up</li>
+          <li>Down</li>
+        <% end %>
       </ul>
       <p>
         <%= review.user.username %>
