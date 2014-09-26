@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def new
     @bus = Bus.find(params[:bus_id])
     @rides = @bus.rides
@@ -8,7 +10,6 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @bus = @review.ride.bus
-    # @review.user_id = session[:user_id]
 
     if @review.save
       redirect_to bus_path(@bus), notice: "Review successfully created."
