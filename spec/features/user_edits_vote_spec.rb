@@ -1,4 +1,4 @@
-require "rails_helper.rb"
+require "rails_helper"
 
 feature "User edits vote", %{
   I want to be able to change my vote
@@ -9,8 +9,8 @@ feature "User edits vote", %{
     @bus = @review.ride.bus
     @user = FactoryGirl.create(:user)
     sign_in_as(@user)
-    visit bus_path(@bus)
     FactoryGirl.create(:vote, review: @review, user: @user)
+    visit bus_path(@bus)
     within("#review-#{@review.id}") { click_link "Down" }
     expect(page).to have_content("Vote changed!")
   end

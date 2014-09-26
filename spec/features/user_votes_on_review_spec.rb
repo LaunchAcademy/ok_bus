@@ -7,7 +7,6 @@ feature "User votes on a review", %{
   before :each do
     @review = FactoryGirl.create(:review)
     @bus = @review.ride.bus
-    visit bus_path(@bus)
   end
 
   scenario "vote added to up vote count" do
@@ -15,9 +14,11 @@ feature "User votes on a review", %{
     sign_in_as(@user)
     visit bus_path(@bus)
     within("#review-#{@review.id}") { expect { click_link "Up" }.to change(Vote, :count).by(1) }
+    save_and_open_page
   end
 
   scenario "must be logged on to vote" do
+    visit bus_path(@bus)
     expect(page).to_not have_content "Vote"
   end
 end
