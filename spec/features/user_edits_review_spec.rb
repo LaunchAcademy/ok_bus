@@ -15,9 +15,9 @@ feature "User edits a review", %{
   bus details page
   } do
 
-    let(:review) { FactoryGirl.create(:review) }
-    let(:ride) { review.ride }
-    let(:bus) { ride.bus }
+  let(:review) { FactoryGirl.create(:review) }
+  let(:ride) { review.ride }
+  let(:bus) { ride.bus }
 
   context "authenticated user" do
     scenario "edit review from the bus detail page" do
