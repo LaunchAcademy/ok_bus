@@ -10,12 +10,6 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
-  #
-  # def check_user!
-  #   @review = Review.find(params[id])
-  #   if current_user.id == @review.user_id || current_user.admin?
-  #   end
-  # end
 
   protected
 

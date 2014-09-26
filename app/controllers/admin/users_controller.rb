@@ -8,7 +8,11 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.destroy
-      redirect_to "index"
+      flash[:notice] = "User successfully deleted"
+      redirect_to "/admin/users"
+    else
+      flash[:notice] = "User cannot be deleted"
+      redirect_to "/admin/users"
     end
   end
 end
