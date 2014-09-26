@@ -11,7 +11,7 @@ class VotesController < ApplicationController
     if @vote.save
       redirect_to bus_path(@bus), notice: "Voted!"
     else
-      redirect_to bus_path(@bus), notice: "Already voted!"
+      @other = "up"
     end
   end
 end
