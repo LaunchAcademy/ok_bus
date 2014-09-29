@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row panel">
   <div class="small-2 column">
     <h1 class="text-right"><%= @bus.number %></h1>
   </div>
@@ -11,7 +11,8 @@
 </div>
 <div class="row">
   <% if user_signed_in? %>
-    <%= link_to "New Review", new_bus_review_path(@bus), class: "button expand"  %>
+    <%= link_to "New Review", new_bus_review_path(@bus),
+                              class: "button expand"  %>
   <% end %>
 <div class="row">
   <ul class="no-bullet">
