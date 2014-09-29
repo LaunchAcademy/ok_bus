@@ -1,5 +1,4 @@
 <h3>Reviews:</h3>
-
 <div class="row">
   <div class="small-2 column">
     <h1 class="text-right"><%= @bus.number %></h1>
@@ -20,7 +19,7 @@
 <div class="row">
   <ul class="no-bullet">
     <% @reviews.each do |review| %>
-      <li>
+      <li id="<%= "review-#{review.id}" %>">
       <div class="row">
         <div class="small-2 column">
           <ul>
@@ -30,6 +29,24 @@
               </a>
             </li>
           </ul>
+      <ul>
+        <% if user_signed_in? %>
+          <li class="upvote">
+            <%= link_to 'Up', bus_review_votes_path(@bus,
+                                                    review,
+                                                    direction: "up"
+                                                    ), method: :POST %>
+            <%= review.up_votes %> votes
+          </li>
+          <li class="downvote">
+            <%= link_to 'Down', bus_review_votes_path(@bus,
+                                                      review,
+                                                      direction: "down"
+                                                      ), method: :POST %>
+            <%= review.down_votes %> votes
+          </li>
+        <% end %>
+      </ul>
         </div>
         <div class="small-8 column">
           <p>
