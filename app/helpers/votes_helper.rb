@@ -14,7 +14,7 @@ module VotesHelper
       link_to direction,
       bus_review_votes_path(bus,
                             review,
-                            direction: direction), method: :POST
+                            direction: direction.downcase), method: :POST
     end
   end
 end

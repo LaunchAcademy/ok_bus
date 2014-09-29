@@ -8,6 +8,7 @@ class VotesController < ApplicationController
                      direction: params[:direction],
                      user: current_user
                      )
+    @vote.save
     redirect_to bus_path(@bus), notice: "Voted!"
   end
 
