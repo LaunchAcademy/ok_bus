@@ -13,7 +13,6 @@
   <% if user_signed_in? %>
     <%= link_to "New Review", new_bus_review_path(@bus), class: "button expand"  %>
   <% end %>
-</div>
 <div class="row">
   <ul class="no-bullet">
     <% @reviews.each do |review| %>
@@ -42,9 +41,9 @@
         <div class="small-2 column">
           <ul>
             <li>
-              <% if current_user == review.user %>
-                <%= link_to 'Delete',
-                    bus_review_path(@bus, review),
+              <% if current_user && (current_user == review.user || current_user.admin?) %>
+                <%= link_to "Edit", edit_bus_review_path(@bus, review) %> | <%= link_to 'Delete',
+                    review_path(review),
                     method: :delete,
                     data: { confirm:
                             'Are you sure?'

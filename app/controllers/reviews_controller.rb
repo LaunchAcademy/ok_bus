@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :authorize!, only: [:destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
   def new
@@ -20,13 +21,15 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
+    @bus = @review.ride.bus
   end
 
   def update
     @review = Review.find(params[:id])
 
     if @review.update(review_params)
-      redirect_to @review, notice: "Review successfully updated."
+      redirect_to bus_path(@review.ride.bus),
+      notice: "Review successfully updated."
     else
       render "edit"
     end
@@ -36,17 +39,18 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @bus = @review.ride.bus
     @review.destroy
-
-    redirect_to bus_path(@bus)
+    redirect_to bus_path(@bus),
+    notice: "Review successfully deleted."
   end
-end
+
 
 private
 
-def review_params
-  params.require(:review).permit(
-    :ride_id,
-    :rating,
-    :body
-  ).merge(user: current_user)
+  def review_params
+    params.require(:review).permit(
+      :ride_id,
+      :rating,
+      :body
+      ).merge(user: current_user)
+  end
 end
