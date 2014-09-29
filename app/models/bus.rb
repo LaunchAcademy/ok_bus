@@ -5,4 +5,9 @@ class Bus < ActiveRecord::Base
   validates :number,    presence: true
   validates :inbound,   presence: true
   validates :outbound,  presence: true
+
+
+  def self.search(query)
+    where("number ilike ? OR inbound ilike ? OR outbound ilike ?", "%#{query}%", "%#{query}%", "%#{query}%")
+  end
 end
