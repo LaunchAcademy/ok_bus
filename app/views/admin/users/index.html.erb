@@ -5,3 +5,4 @@
     <li><%= user.email %> <%= link_to "Delete", admin_user_path(user), method: :delete %></li>
   <% end %>
 </ul>
+<%= paginate @users %>
