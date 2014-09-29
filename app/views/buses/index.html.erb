@@ -1,5 +1,20 @@
 <h1 class="text-center">Bus Lines</h1>
 
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="row collapse">
+        <%= form_tag(buses_path, method: "get", id: "search_form") do %>
+          <div class="small-10 columns">
+            <%= text_field_tag :search, params[:search] %>
+          </div>
+          <div class="small-2 columns">
+            <%= submit_tag "Search", name: nil, class: "button postfix" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
 <div class="row">
   <div class="small-4 column">
     <h3 class="subheader text-center">Inbound</h3>
