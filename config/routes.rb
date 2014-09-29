@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :buses, only: [:index, :show] do
     resources :reviews, only: [:new, :create, :edit] do
-      resources :votes, only: [:create]
+      resources :votes, only: [:create, :update]
     end
   end
 
