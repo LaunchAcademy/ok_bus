@@ -3,11 +3,15 @@ Rails.application.routes.draw do
   root to: 'buses#index'
 
   namespace :admin do
-    resources :users, only: [:index, :destroy]
+    resources :users, only: [:index, :destroy] do
+      get '/page/:page', action: :index, on: :collection
+    end
   end
 
   resources :buses, only: [:index, :show] do
-    resources :reviews, only: [:new, :create, :edit]
+    resources :reviews, only: [:new, :create, :edit] do
+      get '/page/:page', action: :index, on: :collection
+    end
   end
 
   resources :reviews, only: [:update, :destroy]
