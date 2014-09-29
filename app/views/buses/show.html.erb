@@ -42,8 +42,9 @@
           <ul>
             <li>
               <% if current_user && (current_user == review.user || current_user.admin?) %>
-                <%= link_to "Edit", edit_bus_review_path(@bus, review) %> | <%= link_to 'Delete',
-                    review_path(review),
+                <%= link_to "Edit", edit_bus_review_path(@bus, review) %>
+                 | <%= link_to 'Delete',
+                    bus_review_path(@bus, review),
                     method: :delete,
                     data: { confirm:
                             'Are you sure?'
