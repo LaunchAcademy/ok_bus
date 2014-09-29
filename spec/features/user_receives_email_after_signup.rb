@@ -1,9 +1,4 @@
 require "rails_helper"
-#
-# RSpec.describe UserMailer, :type => :mailer do
-#   pending "add some examples to (or delete) #{__FILE__}"
-# end
-#
 
 feature "User is sent confirmation email after sign up", %Q{
   As a user
@@ -16,7 +11,7 @@ feature "User is sent confirmation email after sign up", %Q{
   scenario "user signs up" do
     user = FactoryGirl.build(:user)
     ActionMailer::Base.deliveries = []
-
+    
     visit root_path
     click_on "Sign up"
 
