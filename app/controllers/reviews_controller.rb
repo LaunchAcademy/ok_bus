@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :authorize_to_edit!, only: [:edit, :update, :destroy]
+  # before_action :authorize_to_edit!, only: [:edit, :update, :destroy]
   def new
     @bus = Bus.find(params[:bus_id])
     @rides = @bus.rides
@@ -54,7 +54,8 @@ private
   end
 
   def authorize_to_edit!
-    if current_user.nil? || !(current_user.admin? || current_user != @review.user)
+    binding.pry
+    if current_user.nil? || !(current_user.admin? || current_user.id != @review.user_id)
       flash[:notice] = "You must be an admin to access this!"
       redirect_to root_path
     end
