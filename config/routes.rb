@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :buses, only: [:index, :show] do
     resources :reviews, only: [:new, :create]
+    resources :rides
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
