@@ -24,4 +24,10 @@ FactoryGirl.define do
     user
     ride
   end
+
+  factory :vote do
+    direction "up"
+    user
+    review
+  end
 end
