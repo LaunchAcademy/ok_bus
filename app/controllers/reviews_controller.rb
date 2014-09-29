@@ -26,6 +26,7 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
+    @bus = @review.ride.bus
 
     if @review.update(review_params)
       redirect_to bus_path(@review.ride.bus),
