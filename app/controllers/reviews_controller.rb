@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
-  # before_action :authorize!, only: [:destroy]
   before_action :authenticate_user!, except: [:index, :show]
-
+  before_action :authorize_to_edit, only: [:edit, :update, :destroy]
   def new
     @bus = Bus.find(params[:bus_id])
     @rides = @bus.rides
@@ -38,12 +37,8 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @bus = @review.ride.bus
-    if current_user != @review.user
-      authorize!
-      else
-        @review.destroy
-        redirect_to bus_path(@bus), notice: "Review successfully deleted."
-    end
+    @review.destroy
+    redirect_to bus_path(@bus), notice: "Review successfully deleted."
   end
 
 
@@ -56,4 +51,12 @@ private
       :body
       ).merge(user: current_user)
   end
+
+  def authorize_to_edit!
+    if current_user.nil? || !(current_user.admin? || current_user != @review.user)
+      flash[:notice] = "You must be an admin to access this!"
+      redirect_to root_path
+    end
+  end
+
 end

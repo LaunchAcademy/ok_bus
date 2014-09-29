@@ -47,7 +47,7 @@
             <li>
             <% if !current_user.nil? %>
               <% if current_user == review.user || current_user.admin? %>
-                <%= link_to 'Delete', bus_review_path(@bus, review), method: :delete,
+                <%= link_to 'Delete', review_path(review), method: :delete,
                                                                    data: { confirm:
                                                                            'Are you sure?'
                                                                             } %>
@@ -58,5 +58,5 @@
       <hr>
       </li>
     <% end %>
-  </ul>
-</div>
+  <% end  %>
+<% end %>
