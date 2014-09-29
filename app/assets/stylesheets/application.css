@@ -19,3 +19,11 @@
 #bus_title {
   margin-bottom: 0;
 }
+
+.upvote {
+  background-image: "/public/up_arrow.png", 15px;
+}
+
+.downvote {
+  background-image: "/public/down_arrow.png", 15px;
+}
