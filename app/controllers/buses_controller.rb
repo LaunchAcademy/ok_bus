@@ -1,6 +1,6 @@
 class BusesController < ApplicationController
   def index
-    @buses = Bus.order(:number).page(params[:page]).per(3)
+    @buses = Bus.order("number").page(params[:page]).per(3)
   end
 
   def show
