@@ -46,7 +46,7 @@ feature "User edits a review", %{
   end
 
   context "unauthenticated user" do
-    scenario "user cannot edit a review" do
+    scenario "user cannot edit a review unless logged in" do
       visit edit_bus_review_path(bus, review)
 
       expect(page).to have_content "You need to sign in or sign up before continuing."

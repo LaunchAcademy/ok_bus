@@ -7,7 +7,6 @@ feature "User votes on a review", %{
   before :each do
     @review = FactoryGirl.create(:review)
     @bus = @review.ride.bus
-    visit bus_path(@bus)
   end
 
   scenario "vote added to up vote count" do
@@ -20,6 +19,7 @@ feature "User votes on a review", %{
   end
 
   scenario "must be logged on to vote" do
+    visit bus_path(@bus)
     expect(page).to_not have_content "Vote"
   end
 end

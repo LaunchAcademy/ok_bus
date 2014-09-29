@@ -18,67 +18,9 @@
     <br>
     <br>
   <% end %>
+</div>
 <div class="row">
   <ul class="no-bullet">
-    <% @reviews.each do |review| %>
-      <li id="<%= "review-#{review.id}" %>">
-      <div class="row">
-        <div class="small-2 column">
-          <ul>
-            <li>
-              <a class="clearing-thumbs">
-              <img src=<%= review.user.profile_photo %>>
-              </a>
-            </li>
-          </ul>
-      <ul>
-        <% if user_signed_in? %>
-          <li class="upvote">
-            <%= link_to 'Up', bus_review_votes_path(@bus,
-                                                    review,
-                                                    direction: "up"
-                                                    ), method: :POST %>
-            <%= review.up_votes %> votes
-          </li>
-          <li class="downvote">
-            <%= link_to 'Down', bus_review_votes_path(@bus,
-                                                      review,
-                                                      direction: "down"
-                                                      ), method: :POST %>
-            <%= review.down_votes %> votes
-          </li>
-        <% end %>
-      </ul>
-        </div>
-        <div class="small-8 column">
-          <p>
-            <%= review.user.username.upcase %>
-            rode bus <%= @bus.number %>
-            <%= review.ride.direction %>
-            on a <%= review.ride.day %>
-            between <%= review.ride.timeframe %>
-          </p>
-          <p><%= review.rating %> out of 5</p>
-          <p><%= review.body %></p>
-        </div>
-        <div class="small-2 column">
-          <ul>
-            <li>
-              <% if current_user && (current_user == review.user || current_user.admin?) %>
-                <%= link_to "Edit", edit_bus_review_path(@bus, review) %>
-                 | <%= link_to 'Delete',
-                    review_path(review),
-                    method: :delete,
-                    data: { confirm:
-                            'Are you sure?'
-                            } %>
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <hr>
-      </li>
-    <% end %>
+    <%= render 'buses/review' %>
   </ul>
 </div>
