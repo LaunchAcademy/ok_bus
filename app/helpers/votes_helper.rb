@@ -6,7 +6,7 @@ module VotesHelper
         link_to direction, bus_review_vote_path(bus,
                                                 review,
                                                 vote),
-                           method: :PUT
+                                                method: :PUT
       else
         direction
       end
@@ -14,7 +14,7 @@ module VotesHelper
       link_to direction, bus_review_votes_path(bus,
                                                review,
                                                direction: direction.downcase),
-                         method: :POST
+                                               method: :POST
     end
   end
 
@@ -23,7 +23,7 @@ module VotesHelper
     if vote
       link_to 'Delete Vote', review_vote_path(review,
                                               vote),
-                             method: :DELETE
+                                              method: :DELETE
     end
   end
 end
