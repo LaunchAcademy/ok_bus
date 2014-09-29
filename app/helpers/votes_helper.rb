@@ -17,4 +17,13 @@ module VotesHelper
                          method: :POST
     end
   end
+
+  def delete_vote(bus, review)
+    vote = Vote.find_by(review_id: review.id, user_id: current_user.id)
+    if vote
+      link_to 'Delete Vote', review_vote_path(review,
+                                              vote),
+                             method: :DELETE
+    end
+  end
 end

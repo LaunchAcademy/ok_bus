@@ -19,6 +19,9 @@
               <%= change_or_vote(@bus, review, "Down") %>
               <%= review.down_votes %> votes
             </li>
+            <li>
+              <%= delete_vote(@bus, review) %>
+            </li>
           <% end %>
         </ul>
       </div>

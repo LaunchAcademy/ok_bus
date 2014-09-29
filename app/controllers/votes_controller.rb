@@ -26,4 +26,10 @@ class VotesController < ApplicationController
                 )
     redirect_to bus_path(@bus), notice: "Vote changed!"
   end
+
+  def destroy
+    @vote = Vote.find(params[:id])
+    @vote.destroy
+    redirect_to bus_path(@vote.review.ride.bus), notice: "Vote deleted!"
+  end
 end
