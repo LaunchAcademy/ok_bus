@@ -3,20 +3,18 @@ module VotesHelper
     vote = Vote.find_by(review_id: review.id, user_id: current_user.id)
     if vote
       if vote.direction != direction.downcase
-        link_to direction,
-          bus_review_vote_path(bus,
-                               review,
-                               vote),
-          method: :PUT
+        link_to direction, bus_review_vote_path(bus,
+                                                review,
+                                                vote),
+                           method: :PUT
       else
         direction
       end
     else
-      link_to direction,
-        bus_review_votes_path(bus,
-                              review,
-                              direction: direction.downcase),
-        method: :POST
+      link_to direction, bus_review_votes_path(bus,
+                                               review,
+                                               direction: direction.downcase),
+                         method: :POST
     end
   end
 end
