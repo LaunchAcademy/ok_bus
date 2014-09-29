@@ -1,6 +1,10 @@
 class BusesController < ApplicationController
   def index
-    @buses = Bus.order(:number)
+    if params[:search]
+      @buses = Bus.search(params[:search]).order(:number)
+    else
+      @buses = Bus.order(:number)
+    end
   end
 
   def show
