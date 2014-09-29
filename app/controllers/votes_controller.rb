@@ -4,9 +4,9 @@ class VotesController < ApplicationController
   def create
     @review = Review.find(params[:review_id])
     @bus = @review.ride.bus
-    @vote = Vote.new(review_id: @review.id,
+    @vote = Vote.new(review: @review,
                      direction: params[:direction],
-                     user_id: current_user.id
+                     user: current_user
                      )
     redirect_to bus_path(@bus), notice: "Voted!"
   end

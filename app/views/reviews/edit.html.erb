@@ -1,0 +1,32 @@
+<h1>Edit Review</h1>
+<p><%= link_to "Delete", review_path(@review), method: :delete, data: { confirm: "Are you sure?" } %></p>
+
+<%= form_for @review do |f| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ride_id %><br>
+    <%= f.collection_select :ride_id, @bus.rides, :id, :description %>
+  </div>
+  <div class="field">
+    <%= f.label :rating %><br>
+    <%= f.select :rating, (1..5), include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit"%>
+  </div>
+<% end %>
