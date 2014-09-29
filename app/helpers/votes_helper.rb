@@ -4,17 +4,19 @@ module VotesHelper
     if vote
       if vote.direction != direction.downcase
         link_to direction,
-        bus_review_vote_path(bus,
-                             review,
-                             vote), method: :PUT
+          bus_review_vote_path(bus,
+                               review,
+                               vote),
+          method: :PUT
       else
         direction
       end
     else
       link_to direction,
-      bus_review_votes_path(bus,
-                            review,
-                            direction: direction.downcase), method: :POST
+        bus_review_votes_path(bus,
+                              review,
+                              direction: direction.downcase),
+        method: :POST
     end
   end
 end
