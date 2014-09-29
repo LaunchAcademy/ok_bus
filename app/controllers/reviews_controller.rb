@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authorize!, only: [:destroy]
+  # before_action :authorize!, only: [:destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
   def new
@@ -38,9 +38,12 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @bus = @review.ride.bus
-    @review.destroy
-    redirect_to bus_path(@bus),
-    notice: "Review successfully deleted."
+    if current_user != @review.user
+      authorize!
+      else
+        @review.destroy
+        redirect_to bus_path(@bus), notice: "Review successfully deleted."
+    end
   end
 
 
