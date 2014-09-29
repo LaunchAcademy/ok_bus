@@ -12,7 +12,8 @@ class ReviewsController < ApplicationController
     @bus = @review.ride.bus
 
     if @review.save
-      redirect_to bus_path(@bus), notice: "Review successfully created."
+      redirect_to bus_path(@bus),
+      notice: "Review successfully created."
     else
       render "new"
     end
