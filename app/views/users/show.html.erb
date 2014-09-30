@@ -1,16 +1,15 @@
-<div class="row">
-  <div class="small-2 column">
-    <h1 class="text-right"><%= @user.username %></h1>
-  </div>
-  <div class="small-10 column">
-    <h3 class="text-left subheader">
-      <%= @user.id %><br>
-      <%= @user.email %>
-      <img src="<%= @user.profile_photo %>"></img>
-    </h3>
-  </div>
-</div>
-
-<% @reviews.each do |review| %>
-  <%= review %>
-<% end %>
+<img src="<%= @user.profile_photo %>"></img>
+<h2><%= @user.username %></h2>
+<%= @user.email %>
+<br>
+<p><h4>Your reviews:</h4>
+  <ul>
+    <% @reviews.each do |review| %>
+      <li>Bus: <%= review.ride.bus.number %><br>
+          Direction: <%= review.ride.direction %><br>
+          Timeframe: <%= review.ride.timeframe %><br>
+          <%= review.body %>
+      </li>
+    <% end %>
+  <ul>
+</p>
