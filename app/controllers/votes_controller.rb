@@ -11,6 +11,9 @@ class VotesController < ApplicationController
     if @vote.save
       redirect_to bus_path(@bus), notice: "Voted!"
       UserMailer.vote_email(@review).deliver
+    else
+      redirect_to bus_path(@bus), notice: "Already voted!"
+    end
   end
 
   def update
