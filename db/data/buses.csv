@@ -2,6 +2,11 @@ number,inbound,outbound
 CT1,Central Square Cambridge,B.U. Medical Center/Boston Medical Center via M.I.T.
 CT2,Sullivan Station,Ruggles Station via Kendall/MIT
 CT3,Beth Israel Deaconess Medical Center,Andrew Station via B.U. Medical Center
+SL1,Logan Airport,South Station
+SL2,Design Center,South Station
+Shuttle,Silver Line Way,South Station
+SL4,Dudley Station,South Station at Essex Street
+SL5,Dudley Station,Downtown Crossing at Temple Place
 1,Harvard/Holyoke Gate,Dudley Station via Massachusetts Avenue
 4,North Station,World Trade Center via Federal Courthouse & South Station
 5,City Point,McCormack Housing via Andrew Station
