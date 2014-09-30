@@ -1,16 +1,10 @@
-<%= form_for([@bus, @review]) do |f| %>
-  <% if @review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
-      <ul>
-      <% @review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<h1 class="text-center">
+  <%= link_to "Bus " + @bus.number, bus_path(@bus) %>
+</h1>
+<h3 class="subheader text-center">Review</h3>
 
+<<<<<<< HEAD
   <div class="field">
     <%= f.label :ride_id %><br>
     <%= f.collection_select :ride_id, @bus.rides, :id, :description %>
@@ -29,3 +23,6 @@
 <% end %>
 
 <%= link_to "Back", bus_path(@bus) %>
+=======
+<%= render 'reviews/form' %>
+>>>>>>> origin

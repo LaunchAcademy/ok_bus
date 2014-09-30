@@ -11,22 +11,25 @@ feature "User views all reviews for bus", %{
     visit bus_path(bus)
 
     if review2.ride.bus == bus
-      expect(page).to have_content review2.user.username
+      expect(page).to have_content review2.user.username.upcase
     else
-      expect(page).to_not have_content review2.user.username
+      expect(page).to_not have_content review2.user.username.upcase
     end
   end
 
   scenario "reviews are in order with most recent first" do
     review1 = FactoryGirl.create(:review)
     review2 = FactoryGirl.create(:review, ride: review1.ride)
+    user1 = review1.user.username.upcase
+    user2 = review2.user.username.upcase
     bus = review1.ride.bus
     visit bus_path(bus)
-
+    user1 = review1.user.username.upcase
+    user2 = review2.user.username.upcase
     if review1.created_at > review2.created_at
-      expect(review1.user.username).to appear_before review2.user.username
+      expect(user1).to appear_before user2
     else
-      expect(review2.user.username).to appear_before review1.user.username
+      expect(user2).to appear_before user1
     end
   end
 

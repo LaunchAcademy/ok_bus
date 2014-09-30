@@ -1,21 +1,26 @@
-<h1>Line <%= @bus.number %></h1>
 
-<h2><%= @bus.inbound %> - <%= @bus.outbound %></h2>
-
-<h3>Reviews:</h3>
-
-<ul>
-  <% @reviews.each do |review| %>
-    <li>
-      <p>
-        <%= review.user.username %>
-        rode bus <%= @bus.number %>
-        towards <%= review.ride.direction %>
-        on a <%= review.ride.day %>
-        between <%= review.ride.timeframe %>
-      </p>
-      <h3><%= review.rating %> out of 5</h3>
-      <p><%= review.body %></p>
-    </li>
+<div class="row panel" id="bus_title">
+  <div class="small-2 column">
+    <h1 class="text-right"><%= @bus.number %></h1>
+  </div>
+  <div class="small-10 column">
+    <h3 class="text-left subheader">
+      <%= @bus.inbound %><br>
+      <%= @bus.outbound %>
+    </h3>
+  </div>
+</div>
+<div class="row">
+  <% if user_signed_in? %>
+    <%= link_to "New Review", new_bus_review_path(@bus),
+                              class: "button expand"  %>
+  <% else %>
+    <br>
+    <br>
   <% end %>
-</ul>
+</div>
+<div class="row">
+  <ul class="no-bullet">
+    <%= render 'buses/review' %>
+  </ul>
+</div>

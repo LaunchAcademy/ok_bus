@@ -1,9 +1,60 @@
-<h1>Buses</h1>
+<div class="small-6 small-centered columns">
+  <h1 class="text-center">
+  OK!Bus
+   Boston
+  </h1>
+
+  <p class="text-center">
+    See what others are saying about your bus.<br>
+    Share an awesome bus experience.<br>
+    Complain about a horrible ride.<br>
+    Choose your bus line to leave a review!
+  </p>
+</div>
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="row collapse">
+        <%= form_tag(buses_path, method: "get", id: "search_form") do %>
+          <div class="small-10 columns">
+            <%= text_field_tag :search, params[:search] %>
+          </div>
+          <div class="small-2 columns">
+            <%= submit_tag "Search", name: nil, class: "button postfix" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="small-4 column">
+    <h3 class="subheader text-center">Inbound</h3>
+  </div>
+  <div class="small-4 column">
+    <h1 class="text-center"></h1>
+  </div>
+  <div class="small-4 column">
+    <h3 class="subheader text-center">Outbound</h3>
+  </div>
+</div>
 
 <% @buses.each do |bus| %>
-  <ul>
+  <ul class="no-bullet">
     <li>
-      <%= link_to bus.number, bus_path(bus) %> - <%= bus.inbound %> - <%= bus.outbound %>
+      <div class="row">
+        <hr>
+        <div class="small-4 column">
+          <h5 class="text-center"><%= bus.inbound %></h5>
+        </div>
+        <div class="small-4 column">
+            <h2 class="text-center">
+              <%= link_to bus.number, bus_path(bus), class: "large button expand" %>
+            </h2>
+        </div>
+        <div class="small-4 column">
+          <h5 class="text-center"><%= bus.outbound %></h5>
+        </div>
+      </div>
     </li>
   </ul>
 <% end %>

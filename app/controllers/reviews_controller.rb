@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def new
     @bus = Bus.find(params[:bus_id])
     @rides = @bus.rides
@@ -10,7 +12,8 @@ class ReviewsController < ApplicationController
     @bus = @review.ride.bus
 
     if @review.save
-      redirect_to bus_path(@bus), notice: "Review successfully created."
+      redirect_to bus_path(@bus),
+        notice: "Review successfully created."
     else
       render "new"
     end
@@ -18,25 +21,37 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
+    @bus = @review.ride.bus
   end
 
   def update
     @review = Review.find(params[:id])
+    @bus = @review.ride.bus
 
     if @review.update(review_params)
-      redirect_to @review, notice: "Review successfully updated."
+      redirect_to bus_path(@review.ride.bus),
+        notice: "Review successfully updated."
     else
       render "edit"
     end
   end
-end
+
+  def destroy
+    @review = Review.find(params[:id])
+    @bus = @review.ride.bus
+    @review.destroy
+    redirect_to bus_path(@bus),
+      notice: "Review successfully deleted."
+  end
+
 
 private
 
-def review_params
-  params.require(:review).permit(
-    :ride_id,
-    :rating,
-    :body
-  ).merge(user: current_user)
+  def review_params
+    params.require(:review).permit(
+      :ride_id,
+      :rating,
+      :body
+      ).merge(user: current_user)
+  end
 end

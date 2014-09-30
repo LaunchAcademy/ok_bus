@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1>Edit Review</h1>
 <p>(or <%= link_to 'Delete', bus_review_path(@review), method: :delete, data: { confirm: 'Are you sure?' } %>)</p>
 
@@ -30,3 +31,14 @@
     <%= f.submit 'Submit'%>
   </div>
 <% end %>
+=======
+<h1 class="text-center">
+  <%= link_to "Bus " + @bus.number, bus_path(@bus) %>
+</h1>
+<h3 class="subheader text-center">Edit Review</h3>
+
+<p class="text-center"><%= link_to "Delete", bus_review_path(@bus, @review), method: :delete, data: { confirm: "Are you sure?" } %></p>
+
+ <%= render 'reviews/form' %>
+
+>>>>>>> origin
