@@ -23,7 +23,6 @@ class UserMailer < ActionMailer::Base
     @ride = @review.ride
     @bus = @ride.bus
     @vote = @review.votes[0]
-    binding.pry
     mail(to: @email, subject: "Someone just voted on your OkBus review!")
   end
 end
