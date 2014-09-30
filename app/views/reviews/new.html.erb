@@ -4,48 +4,4 @@
 </h1>
 <h3 class="subheader text-center">Review</h3>
 
-    <% if @review.errors.any? %>
-      <div class="error">
-        <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
-
-        <ul>
-        <% @review.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-<div class="row">
-  <div class="small-9 small-centered columns">
-    <%= form_for([@bus, @review]) do |f| %>
-      <div>
-        <label class="left">
-          <%= f.label :ride_id %>
-        </label>
-        <label class="right">
-          <small>required</small>
-        </label>
-        <%= f.collection_select :ride_id, @bus.rides, :id, :description %>
-      </div>
-      <div>
-        <label class="left">
-          <%= f.label :rating %>
-        </label>
-        <label class="right">
-          <small>required</small>
-        </label>
-        <%= f.select :rating, (1..5), include_blank: true %>
-      </div>
-      <div>
-        <label class="left">
-          <%= f.label :body %>
-        </label>
-        <%= f.text_area :body %>
-      </div>
-      <div>
-        <%= f.submit value: 'Create Review', class: 'button' %>
-      </div>
-    <% end %>
-  </div>
-</div>
+<%= render 'reviews/form' %>
