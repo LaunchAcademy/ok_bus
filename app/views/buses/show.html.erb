@@ -62,18 +62,13 @@
         <div class="small-2 column">
           <ul>
             <li>
-            <% if !current_user.nil? %>
-              <% if current_user == review.user || current_user.admin? %>
-                <%= link_to 'Delete', review_path(review), method: :delete,
-                                                                   data: { confirm:
-                                                                           'Are you sure?'
-                                                                            } %>
+            <% if current_user && current_user.authorized_to_edit?(review) %>
+              <%= link_to 'Delete', review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
             </li>
           </ul>
         </div>
       </div>
       <hr>
       </li>
-    <% end %>
-  <% end  %>
 <% end %>

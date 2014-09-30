@@ -34,6 +34,7 @@ feature "User adds a review and receives email", %{
 
       expect(ActionMailer::Base.deliveries.size).to eql(1)
       last_email = ActionMailer::Base.deliveries.last
+      expect(last_email.subject).to eq "Thank you for your review on OkBus!"
 
     end
   end

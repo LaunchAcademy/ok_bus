@@ -16,7 +16,12 @@ class User < ActiveRecord::Base
     UserMailer.welcome_email(self).deliver
   end
 
+  def authorized_to_edit?(review)
+    admin? || id == review.user_id
+  end
+
   protected
+
   def confirmation_required?
     false
   end
