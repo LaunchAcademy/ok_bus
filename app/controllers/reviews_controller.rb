@@ -1,5 +1,4 @@
 class ReviewsController < ApplicationController
-  before_action :authorize!, only: [:destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
   def new
@@ -13,7 +12,8 @@ class ReviewsController < ApplicationController
     @bus = @review.ride.bus
 
     if @review.save
-      redirect_to bus_path(@bus), notice: "Review successfully created."
+      redirect_to bus_path(@bus),
+      notice: "Review successfully created."
     else
       render "new"
     end

@@ -11,10 +11,13 @@ Rails.application.routes.draw do
   resources :buses, only: [:index, :show] do
     resources :reviews, only: [:new, :create, :edit] do
       get '/page/:page', action: :index, on: :collection
+      resources :votes, only: [:create, :update]
     end
   end
 
-  resources :reviews, only: [:update, :destroy]
+  resources :reviews, only: [:update, :destroy] do
+    resources :votes, only: [:destroy]
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
