@@ -11,7 +11,6 @@ class ReviewsController < ApplicationController
     @ride = Ride.find_by(ride_params)
     @review = Review.new((review_params).merge(ride_id: @ride.id))
     @bus = @ride.bus
-    binding.pry
     if @review.save
       redirect_to bus_path(@bus),
         notice: "Review successfully created."
