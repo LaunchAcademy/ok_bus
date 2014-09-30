@@ -10,20 +10,18 @@
             </a>
           </li>
         </ul>
-        <ul class="no-bullet">
-          <% if user_signed_in? %>
-            <li class="upvote">
-              <%= change_or_vote(review.ride.bus, review, "Up") %>
-              <%= review.up_votes %> votes
-            </li>
-            <li class="downvote">
-              <%= change_or_vote(review.ride.bus, review, "Down") %>
-              <%= review.down_votes %> votes
-            </li>
-            <li>
-              <%= delete_vote(review.ride.bus, review) %>
-            </li>
-          <% end %>
+        <ul>
+          <li>
+            <% if current_user && (current_user == review.user || current_user.admin?) %>
+              <%= link_to "Edit", edit_bus_review_path(@bus, review) %>
+               | <%= link_to 'Delete',
+                  review_path(review),
+                  method: :delete,
+                  data: { confirm:
+                          'Are you sure?'
+                          } %>
+            <% end %>
+          </li>
         </ul>
       </div>
       <div class="small-8 column">
@@ -38,18 +36,27 @@
         <p><%= review.body %></p>
       </div>
       <div class="small-2 column">
-        <ul class="no-bullet">
-          <li>
-            <% if current_user && (current_user == review.user || current_user.admin?) %>
-              <%= link_to "Edit", edit_bus_review_path(review.ride.bus, review) %>
-               | <%= link_to 'Delete',
-                  review_path(review),
-                  method: :delete,
-                  data: { confirm:
-                          'Are you sure?'
-                          } %>
-            <% end %>
-          </li>
+        <ul>
+          <% if user_signed_in? %>
+            <li class="upvote">
+              <%= review.up_votes %>
+              <%= change_or_vote(@bus, review, "Up") %>
+            </li>
+            <li>
+              <%= review.down_votes %>
+              <%= change_or_vote(@bus, review, "Down") %>
+            </li>
+            <li>
+              <%= delete_vote(@bus, review) %>
+            </li>
+          <% else %>
+            <li>
+              <span class="foundicon-arrow-up"><%= review.up_votes %> Up </i>
+            </li>
+            <li>
+              <%= review.down_votes %> Down
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>

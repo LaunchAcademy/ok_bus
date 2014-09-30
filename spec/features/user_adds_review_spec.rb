@@ -37,7 +37,7 @@ feature "User adds a review", %{
       select review.ride.description, from: "review[ride_id]"
       select review.rating, from: "review[rating]"
 
-      click_on "Create Review"
+      click_on "Submit Review"
 
       expect(page).to have_content "Review successfully created."
     end
@@ -48,7 +48,7 @@ feature "User adds a review", %{
 
       select ride.description, from: "Ride"
 
-      click_on "Create Review"
+      click_on "Submit Review"
 
       expect(page).to have_content "can't be blank"
     end
