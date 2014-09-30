@@ -8,9 +8,10 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
-    @bus = @review.ride.bus
-
+    @ride = Ride.find_by(ride_params)
+    @review = Review.new((review_params).merge(ride_id: @ride.id))
+    @bus = @ride.bus
+    binding.pry
     if @review.save
       redirect_to bus_path(@bus),
         notice: "Review successfully created."
@@ -49,9 +50,16 @@ private
 
   def review_params
     params.require(:review).permit(
-      :ride_id,
       :rating,
       :body
       ).merge(user: current_user)
+  end
+
+  def ride_params
+    params.require(:ride).permit(
+      :timeframe,
+      :day,
+      :direction
+      ).merge(bus_id: params[:bus_id])
   end
 end

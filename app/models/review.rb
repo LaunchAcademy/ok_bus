@@ -2,6 +2,7 @@ class Review < ActiveRecord::Base
   belongs_to :user
   belongs_to :ride
   has_many :votes, dependent: :destroy
+  accepts_nested_attributes_for :ride
 
   validates :user, presence: true
   validates :ride, presence: true
