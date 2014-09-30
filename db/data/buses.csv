@@ -1,16 +1,186 @@
 number,inbound,outbound
-1,"Harvard/Holyoke Gate","Dudley Station via Massachusetts Avenue"
-15,"Kane Square","Ruggles Station via Uphams Corner"
-22,"Ashmont Station","Ruggles Station via Talbot Avenue & Jackson Square"
-23,"Ashmont Station","Ruggles Station via Washington Street"
-28,"Mattapan Station","Ruggles Station via Dudley Station"
-32,"Wolcott Square","Forest Hills Station via Hyde Park Avenue"
-39,"Forest Hills","Back Bay via Huntington Avenue"
-57,"Watertown Yard","Kenmore Station"
-66,"Harvard Square","Dudley Station via Allston & Brookline Village"
-71,"Watertown Square","Harvard Station via Mt. Auburn Street"
-73,"Waverley Square","Harvard Station via Trapelo Road"
-77,"Arlington Heights","Harvard Station via Massachusetts Avenue"
-111,"Woodlawn or Broadway & Park Ave.","Haymarket Station via Mystic River/Tobin Bridge"
-116,"Wonderland Station","Maverick Station via Revere Street"
-117,"Wonderland Station","Maverick Station via Beach Street"
+CT1,Central Square Cambridge,B.U. Medical Center/Boston Medical Center via M.I.T.
+CT2,Sullivan Station,Ruggles Station via Kendall/MIT
+CT3,Beth Israel Deaconess Medical Center,Andrew Station via B.U. Medical Center
+SL1,Logan Airport,South Station
+SL2,Design Center,South Station
+Shuttle,Silver Line Way,South Station
+SL4,Dudley Station,South Station at Essex Street
+SL5,Dudley Station,Downtown Crossing at Temple Place
+1,Harvard/Holyoke Gate,Dudley Station via Massachusetts Avenue
+4,North Station,World Trade Center via Federal Courthouse & South Station
+5,City Point,McCormack Housing via Andrew Station
+7,City Point,Otis & Summer Streets via Summer Street & South Station
+8,Harbor Point/UMass,Kenmore Station via B.U. Medical Center & Dudley Station
+9,City Point,Copley Square via Broadway Station
+10,City Point,Copley Square via Andrew Station & B.U. Medical Center Link
+11,City Point,Downtown BayView Route
+14,Roslindale Square,"Heath Street via Dudley Station, Grove Hall & Jackson Square Station"
+15,Kane Square or Fields Corner Station,Ruggles Station via Uphams Corner
+16,Forest Hills Station,Andrew Station or UMass via Columbia Road
+17,Fields Corner Station,Andrew Station via Uphams Corner & Edward Everett Square
+18,Ashmont Station,Andrew Station via Fields Corner Station
+19,Fields Corner Station,Kenmore or Ruggles Station via Grove Hall & Dudley Station
+21,Ashmont Station,Forest Hills Station via Morton Street
+22,Ashmont Station,Ruggles Station via Talbot Avenue & Jackson Square
+23,Ashmont Station,Ruggles Station via Washington Street
+24,Wakefield Avenue & Truman Highway,Mattapan or Ashmont Station via River Street
+26,Ashmont Station,Norfolk & Morton Belt Line
+27,Mattapan Station,Ashmont Station via River Street
+28,Mattapan Station,Ruggles Station via Dudley Station
+29,Mattapan Station,Jackson Square Station via Seaver Street & Columbus Avenue
+30,Mattapan Station,Forest Hills Station via Cummins Highway & Roslindale Square
+31,Mattapan Station,Forest Hills Station via Morton Street
+32,Wolcott Square or Cleary Square,Forest Hills Station via Hyde Park Avenue
+33,Dedham Line,Mattapan Station via River Street
+34,Walpole Center or Dedham Line,Forest Hills Station via Washington Street
+34E,Walpole Center,Forest Hills Station via Washington Street
+35,Dedham Mall/Stimson Street,Forest Hills Station via Belgrade Avenue & Centre Street
+36,Charles River Loop or V.A. Hospital,Forest Hills Station via Belgrade Avenue & Centre Street
+37,Baker & Vermont Streets,Forest Hills Station via Belgrade Avenue & Centre Street
+38,Wren Street,Forest Hills Station via Centre & South Streets
+39,Forest Hills Station,Back Bay Station via Huntington Avenue
+40,Georgetowne,Forest Hills Station via Washington Street & West Boundary Road
+41,Centre & Eliot Street,"JFK/UMass Station via Dudley Station, Centre Street & Jackson Square Station"
+42,Forest Hills Station,Dudley or Ruggles Station via Washington Street
+43,Ruggles Station,Park & Tremont Streets via Tremont Street
+44,Jackson Square Station,Ruggles Station via Seaver Street & Humboldt Avenue
+45,Franklin Park Zoo,Ruggles Station via Blue Hill Avenue
+47,"Central Square, Cambridge","Broadway Station via B.U. Medical Center, Dudley Station & Longwood Medical Area"
+50,Cleary Square,Forest Hills Station via Roslindale Square
+51,Cleveland Circle,Forest Hills Station via Hancock Village
+52,Dedham Mall or Charles River Loop,Watertown Yard via Oak Hill & Newton Center
+55,Jersey & Queensberry,Copley Square or Park & Tremont Street via Ipswich Street
+57,Watertown Yard,Kenmore Station via Newton Corner & Brighton Center
+57A,Oak Square,Kenmore Station via Commonwealth Avenue
+59,Needham Junction,Watertown Square via Newtonville
+60,Chestnut Hill,Kenmore Station via Brookline Village & Cypress Street
+62,Bedford V.A. Hospital,Alewife Station via Lexington Center & Arlington Heights
+64,Oak Square,"University Park, Cambridge or Kendall/MIT via North Beacon Street"
+65,Brighton Center,"Kenmore Station via Washington Street, Brookline Village & Brookline Avenue"
+66,Harvard Square,Dudley Station via Allston & Brookline Village
+67,Turkey Hill,Alewife Station via Arlington Center
+68,Harvard/Holyoke Gate,Kendall/M.I.T. via Broadway
+69,Harvard/Holyoke Gate,Lechmere Station via Cambridge Street
+70,"Cedarwood or Central Square, Waltham","University Park via Watertown Square, Arsenal Street & Western Avenue"
+70A,North Waltham,"University Park via Watertown Square and Central Square, Cambridge"
+71,Watertown Square,Harvard Station via Mt. Auburn Street
+72,Huron Avenue,Harvard Station via Concord Avenue
+73,Waverley Square,Harvard Station via Trapelo Road
+74,Belmont Center,Harvard Station via Concord Avenue
+75,Belmont Center,Harvard Station via Concord Avenue
+76,Hanscom/Lincoln Labs,Alewife Station via Lexington Center & Civil Air Terminal
+77,Arlington Heights,Harvard Station via Massachusetts Avenue
+77A,North Cambridge Carhouse,Harvard Station
+78,Arlmont Village,Harvard Station via Park Circle
+79,Arlington Heights,Alewife Station via Massachusetts Avenue
+80,Arlington Center,Lechmere Station via Medford Hillside
+83,Rindge Avenue,"Central Square, Cambridge via Porter Square Station"
+84,Arlmont Village,Alewife Station
+85,Spring Hill,Kendall/M.I.T. Station via Summer Street & Union Square
+86,Sullivan Square Station,Reservoir (Cleveland Circle) via Harvard/Johnston Gate
+87,Arlington Center or Clarendon Hill,Lechmere Station via Somerville Avenue
+88,Clarendon Hill,Lechmere Station via Highland Avenue
+89,Clarendon Hill or Davis Square,Sullivan Square Station via Broadway
+90,Davis Square,Wellington Station via Sullivan Square Station & Assembly Mall
+91,Sullivan Square Station,"Central Square, Cambridge via Washington Street"
+92,Assembly Square Mall,"Downtown via Sullivan Square Station, Main Street & Haymarket Station"
+93,Sullivan Square Station,Downtown via Bunker Hill Street & Haymarket Station
+94,Medford Square,Davis Square Station via West Medford & Medford Hillside
+95,West Medford,Sullivan Square Station via Mystic Avenue
+96,Medford Square,Harvard Station via George Street & Davis Square Station
+97,Malden Center Station,Wellington Station via Commercial & Hancock Streets
+99,Boston Regional Medical Center,Wellington Station via Main Street & Malden Center Station
+100,Elm Street,Wellington Station via Fellsway
+101,Malden Center Station,"Sullivan Square Station via Salem Street, Main Street & Broadway"
+104,Malden Center Station,Sullivan Square Station via Ferry Street & Broadway
+105,Malden Center Station,Sullivan Square Station via Newland Street Housing
+106,"Lebanon Street, Malden or Franklin Square",Wellington Station via Main Street
+108,Linden Square,Wellington Station via Malden Center Station & Highland Avenue
+109,Linden Square,Sullivan Square Station via Glendale Square
+110,Wonderland or Broadway & Park Avenue,Wellington Station via Park Avenue & Woodlawn
+111,Woodlawn or Broadway & Park Avenue,Haymarket Station via Mystic River/Tobin Bridge
+112,Wellington Station,"Wood Island Station via Central Avenue, Mystic Mall & Admiral's Hill"
+114,Bellingham Square,Maverick Station
+116,Wonderland Station,Maverick Station via Revere Street
+117,Wonderland Station,Maverick Station via Beach Street
+119,Northgate,Beachmont Station via Revere Center & Cooledge Housing
+120,Orient Heights Station,"Maverick Station via Bennington Street, Jeffries Point & Waldemar Loop"
+121,Wood Island Station,Maverick Station via Lexington Street
+131,Melrose Highlands,Malden Center Station via Oak Grove Station
+132,Redstone Shopping Center - Malden Station,Malden Station
+134,North Woburn,"Wellington Station via Woburn Square, Winchester Center, & Meadow Glen Mall"
+136,Reading Depot,"Malden Station via Wakefield, Melrose & Oak Grove Station"
+137,Reading Depot,"Malden Station via North Avenue, Wakefield, Melrose & Oak Grove Station"
+170,"Central Square, Waltham",Dudley Square
+171,Dudley Station,Logan Airport via Andrew Station
+191,Mattapan,"Haymarket via Ashmont, Fields Corner and Dudley Station"
+192,Cleary Square,Haymarket via Forest Hills and Copley Square
+193,Watertown Yard,Haymarket via Kenmore Station
+194,Clarendon Hill,Haymarket via Sullivan Square Station
+201,Fields Corner or North Quincy Station,Fields Corner via Neponset Avenue to Adams Street
+202,Fields Corner or North Quincy Station,Fields Corner via Adams Street to Neponset Avenue
+210,Quincy Center Station,North Quincy Station or Fields Corner Station via Hancock Street & Neponset Avenue
+211,Quincy Center Station,Squantum via Montclair & North Quincy Station
+212,Quincy Center Station,North Quincy Station via Billings Road
+214,Quincy Center Station,Germantown via Sea Street & O'Brien Towers
+215,Quincy Center Station,Ashmont Station via West Quincy & East Milton Square
+216,Quincy Center Station,Houghs Neck via Sea Street
+217,Quincy Center Station,"Ashmont Station via Beale Street, Wollaston, & East Milton Square"
+220,Quincy Center Station,Hingham Center via Fore River Bridge
+221,Quincy Center Station,Fort Point via Bicknell Square
+222,Quincy Center Station,East Weymouth via Bicknell Square
+225,Quincy Center,Weymouth Landing via Quincy Avenue & Shaw Street or Desmoines Road
+230,Quincy Center Station,Montello Commuter Rail Station via Holbrook &Braintree Station
+236,Quincy Center Station,South Shore Plaza via East Braintree & Braintree Station
+238,Quincy Center Station,Holbrook/Randolph Commuter Rail Station
+240,Avon Square or Holbrook/Randolph Commuter Rail Station,"Ashmont Station via Crawford Square, Randolph"
+245,Quincy Center Station,Mattapan Station via Quincy Hospital & Pleasant Street
+274,Long Island,Fire Academy shuttle
+275,Long Island,Downtown Boston via Expressway & JFK/UMass
+276,Long Island,Boston Medical Center via Expressway & Neponset
+277,Lemuel Shattuck Hospital,Downtown Boston via Tremont Street
+325,"Elm Street, Medford","Haymarket Station via Fellsway West, Salem Street & I-93"
+326,West Medford,"Haymarket Station via Playstead Road, High Street, Medford & I-93"
+350,North Burlington,Alewife Station via Burlington Mall
+351,Oak Park/Bedford Woods,Alewife Station via Middlesex Turnpike
+352,Burlington Express,Boston via Route 128 & I-93
+354,Woburn Express,Boston via Woburn Sq. & I-93
+411,Malden Center Station,Revere/Jack Satter House via Granada Highlands and Northgate
+424,Eastern Avenue & Essex Street,Haymarket
+424W,Eastern Avenue & Essex Street,Wonderland Station
+426,"Central Square, Lynn",Haymarket Station via Cliftondale
+426W,"Central Square, Lynn",Wonderland Station via Cliftondale Square
+428,Oaklandvale,Haymarket Station via Granada Highlands
+429,Northgate Shopping Center,"Central Square, Lynn via Linden Square & Square One Mall"
+430,Saugus Center,Malden Center Station via Square One Mall
+431,Neptune Towers,"Central Square, Lynn via Summer Street"
+434,Peabody,Haymarket EXPRESS via Goodwins Circle
+435,Liberty Tree Mall,"Central Square, Lynn via Peabody Square"
+436,Liberty Tree Mall,"Central Square, Lynn via Goodwins Circle"
+439,"Bass Point, Nahant","Wonderland via Central Square, Lynn"
+441,Marblehead,"Wonderland via Central Square, Lynn, Paradise Road & Lynnway"
+442,Marblehead,"Wonderland via Central Square, Lynn, Humphrey Street & Lynnway"
+448,Marblehead,"Downtown Crossing via Paradise Road, Lynnway, & Airport"
+449,Marblehead,"Downtown Crossing via Humphrey Street, Lynnway, & Airport"
+450,Salem Depot,Haymarket
+450W,Salem Depot,Wonderland Station
+451,North Beverly,Salem Depot via Cabot Street or Tozer Road
+455,Salem Depot,"Wonderland via Central Square, Lynn"
+456,Salem Depot,"Central Square, Lynn via Highland Avenue"
+459,Salem Depot,"Downtown Crossing via Logan Airport & Central Square, Lynn"
+465,Salem Depot,Liberty Tree Mall via Peabody & Danvers
+501,Brighton Center,Downtown via Oak Square & Massachusetts Turnpike
+502,Watertown Yard,Copley Square (St. James Avenue at Dartmouth St.) viaNewton Corner & Massachusetts Turnpike
+503,Brighton Center,Copley Square via Oak Square & Massachusetts Turnpike
+504,Watertown/Newton Corner,Downtown via Massachusetts Turnpike
+505,"Central Square, Waltham",Downtown via Moody Street & Massachusetts Turnpike
+553,Roberts,"Downtown Boston via Newton Corner & Central Square, Waltham"
+554,Waverly Square,"Downtown Boston via Newton Corner, Central Square, Waltham & Bentley College"
+556,Waltham Highlands,"Downtown Boston via Newton Corner & Central Square, Waltham & Newtonville"
+558,Riverside,Downtown Boston via Newton Corner & Turnpike
+710,North Medford,"Medford Square, Meadow Glen Mall or Wellington Station"
+712,Point Shirley,Orient Heights
+713,Point Shirley,Orient Heights
+714,"Pemberton Point, Hull","Station Street, Hingham"
+716,Cobbs Corner,Mattapan Station
