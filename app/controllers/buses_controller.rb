@@ -4,7 +4,7 @@ class BusesController < ApplicationController
     if params[:search]
       @buses = Bus.search(params[:search]).order(:number)
     else
-      @buses = Bus.all.sort_by{ |a| Bus::order_numbers(a.number) }
+      @buses = Bus.all.sort_by { |a| Bus::order_numbers(a.number) }
     end
   end
 
