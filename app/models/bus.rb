@@ -12,4 +12,18 @@ class Bus < ActiveRecord::Base
       "%#{query}%", "%#{query}%", "%#{query}%"
       )
   end
+
+  def self.order_numbers(number)
+    if number[0].match(/\d/)
+      if number.scan(/\d/).size == 1
+        "00" + number
+      elsif number.scan(/\d/).size == 2
+        "0" + number
+      else
+        number
+      end
+    else
+      number
+    end
+  end
 end
