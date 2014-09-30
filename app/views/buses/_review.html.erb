@@ -1,5 +1,4 @@
 <% @reviews.each do |review| %>
-  <div class="panel">
   <li id="<%= "review-#{review.id}" %>">
     <div class="row">
       <div class="small-2 column">
@@ -51,7 +50,7 @@
             </li>
           <% else %>
             <li>
-              <span class="foundicon-arrow-up"><%= review.up_votes %> Up </i>
+              <%= review.up_votes %> Up
             </li>
             <li>
               <%= review.down_votes %> Down
@@ -60,7 +59,7 @@
         </ul>
       </div>
     </div>
-    </li>
-  </div>
+    <hr>
+  </li>
 <% end %>
 
