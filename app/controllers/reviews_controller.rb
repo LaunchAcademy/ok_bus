@@ -26,9 +26,10 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
+    @ride = Ride.find_by(ride_params)
     @bus = @review.ride.bus
 
-    if @review.update(review_params)
+    if @review.update((review_params).merge(ride_id: @ride.id))
       redirect_to bus_path(@review.ride.bus),
         notice: "Review successfully updated."
     else
