@@ -15,6 +15,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'kaminari'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
+#added 'will-paginate' to help with the infinite scroll
+gem 'will-paginate', '>= 3.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
