@@ -24,6 +24,8 @@ feature "User views all reviews for bus", %{
     user2 = review2.user.username.upcase
     bus = review1.ride.bus
     visit bus_path(bus)
+    user1 = review1.user.username.upcase
+    user2 = review2.user.username.upcase
     if review1.created_at > review2.created_at
       expect(user1).to appear_before user2
     else

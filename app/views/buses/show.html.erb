@@ -1,5 +1,5 @@
 <h3>Reviews:</h3>
-<div class="row">
+<div class="row panel" id="bus_title">
   <div class="small-2 column">
     <h1 class="text-right"><%= @bus.number %></h1>
   </div>
@@ -12,10 +12,13 @@
 </div>
 <div class="row">
   <% if user_signed_in? %>
-    <%= link_to "New Review", new_bus_review_path(@bus), class: "button expand"  %>
+    <%= link_to "New Review", new_bus_review_path(@bus),
+                              class: "button expand"  %>
+  <% else %>
+    <br>
+    <br>
   <% end %>
 </div>
-
 <div class="row">
   <ul class="no-bullet">
     <% @reviews.each do |review| %>
@@ -72,3 +75,6 @@
       <hr>
       </li>
 <% end %>
+    <%= render 'buses/review' %>
+  </ul>
+</div>

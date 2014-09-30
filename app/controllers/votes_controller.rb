@@ -11,8 +11,26 @@ class VotesController < ApplicationController
     if @vote.save
       redirect_to bus_path(@bus), notice: "Voted!"
       UserMailer.vote_email(@review).deliver
+  end
+
+  def update
+    @vote = Vote.find(params[:id])
+    if @vote.direction == "up"
+      @other = "down"
     else
-      redirect_to bus_path(@bus), notice: "Already voted!"
+      @other = "up"
     end
+    @bus = @vote.review.ride.bus
+    @vote.update(review_id: @vote.review.id,
+                 user_id: current_user.id,
+                 direction: @other
+                )
+    redirect_to bus_path(@bus), notice: "Vote changed!"
+  end
+
+  def destroy
+    @vote = Vote.find(params[:id])
+    @vote.destroy
+    redirect_to bus_path(@vote.review.ride.bus), notice: "Vote deleted!"
   end
 end
