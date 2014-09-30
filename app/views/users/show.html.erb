@@ -1,6 +1,7 @@
 <img src="<%= @user.profile_photo %>"></img>
 <h2><%= @user.username %></h2>
 <%= @user.email %>
+<%= link_to "Edit Info", edit_user_registration_path %>
 <br>
 <p><h4>Your reviews:</h4>
   <ul>
