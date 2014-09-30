@@ -81,5 +81,4 @@ test:
 production:
   <<: *default
   database: ok_bus_production
-  username: ok_bus
   password: <%= ENV['OK_BUS_DATABASE_PASSWORD'] %>

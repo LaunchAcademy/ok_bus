@@ -15,3 +15,8 @@
  *= require foundation_and_overrides
 
  */
+
+#bus_title {
+  margin-bottom: 0;
+}
+

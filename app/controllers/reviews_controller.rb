@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
 
     if @review.save
       redirect_to bus_path(@bus),
-      notice: "Review successfully created."
+        notice: "Review successfully created."
     else
       render "new"
     end
@@ -26,10 +26,11 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
+    @bus = @review.ride.bus
 
     if @review.update(review_params)
       redirect_to bus_path(@review.ride.bus),
-      notice: "Review successfully updated."
+        notice: "Review successfully updated."
     else
       render "edit"
     end
@@ -40,7 +41,7 @@ class ReviewsController < ApplicationController
     @bus = @review.ride.bus
     @review.destroy
     redirect_to bus_path(@bus),
-    notice: "Review successfully deleted."
+      notice: "Review successfully deleted."
   end
 
 
