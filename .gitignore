@@ -20,3 +20,5 @@
 
 # Ignore environment variables
 .env
+
+/coverage
