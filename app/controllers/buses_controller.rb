@@ -1,10 +1,12 @@
 class BusesController < ApplicationController
-  def index
+    def index
     if params[:search]
       @buses = Bus.search(params[:search]).order(:number)
-    elsif Bus.search(params[:search]).empty?
-      @buses = Bus.order(:number)
-      flash[:notice] = "Could not find your search term"
+
+      if @buses.empty?
+        @buses = Bus.order(:number)
+        flash[:notice].now = "Could not find your search term"
+      end
     else
       @buses = Bus.order(:number)
     end
