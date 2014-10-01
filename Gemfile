@@ -46,6 +46,12 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'dotenv-rails'
   gem 'faker'
+  gem 'email_spec'
+  gem 'mailcatcher'
+end
+
+group :test do
+  gem 'coveralls', require: false
 end
 
 gem 'rails_12factor', group: :production
@@ -61,5 +67,3 @@ gem 'rails_12factor', group: :production
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
-ruby "2.0.0"
