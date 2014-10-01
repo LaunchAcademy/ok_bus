@@ -5,7 +5,7 @@ class BusesController < ApplicationController
 
       if @buses.empty?
         @buses = Bus.order(:number)
-        flash[:notice].now = "Could not find your search term"
+        flash[:notice] = "Could not find your search term"
       end
     else
       @buses = Bus.order(:number)
