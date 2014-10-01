@@ -1,6 +1,9 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :authorize_to_edit!, only: [:edit, :update, :destroy]
+  def index
+    @reviews = Review.order(created_at: :desc)
+  end
+
   def new
     @bus = Bus.find(params[:bus_id])
     @rides = @bus.rides
@@ -14,6 +17,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to bus_path(@bus),
         notice: "Review successfully created."
+
       UserMailer.review_email(@review).deliver
     else
       render "new"
