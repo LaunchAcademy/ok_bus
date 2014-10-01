@@ -13,7 +13,7 @@ class Bus < ActiveRecord::Base
       )
   end
 
-  def self.order_numbers(number)
+  def order_numbers
     if number[0].match(/\d/)
       if number.scan(/\d/).size == 1
         "00" + number

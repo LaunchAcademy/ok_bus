@@ -1,10 +1,9 @@
 class BusesController < ApplicationController
   def index
-    @number =
     if params[:search]
       @buses = Bus.search(params[:search]).order(:number)
     else
-      @buses = Bus.all.sort_by { |a| Bus::order_numbers(a.number) }
+      @buses = Bus.all.sort_by(&:order_numbers)
     end
   end
 
