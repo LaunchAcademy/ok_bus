@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/<YOUR_GITHUB_USERNAME>/<YOUR_REPO_NAME>.svg?branch=master)](https://travis-ci.org/<YOUR_GITHUB_USERNAME>/<YOUR_REPO_NAME>) [![Code Climate](https://codeclimate.com/github/<YOUR_GITHUB_USERNAME>/<YOUR_REPO_NAME>.png)](https://codeclimate.com/github/<YOUR_GITHUB_USERNAME>/<YOUR_REPO_NAME>) [![Coverage Status](https://coveralls.io/repos/<YOUR_GITHUB_USERNAME>/<YOUR_REPO_NAME>/badge.png)](https://coveralls.io/r/<YOUR_GITHUB_USERNAME>/<YOUR_REPO_NAME>)
+[![Build Status](https://travis-ci.org/LaunchAcademy/ok_bus.svg?branch=master)](https://travis-ci.org/LaunchAcademy/ok_bus) [![Code Climate](https://codeclimate.com/github/LaunchAcademy/ok_bus.png)](https://codeclimate.com/github/LaunchAcademy/ok_bus) [![Coverage Status](https://coveralls.io/repos/LaunchAcademy/ok_bus/badge.png)](https://coveralls.io/r/LaunchAcademy/ok_bus)
 
 # README
 
