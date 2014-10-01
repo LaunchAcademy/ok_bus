@@ -6,6 +6,9 @@
       <%= devise_error_messages! %>
 
       <div><%= f.label :username %>
+        <label class="right">
+          <small>required</small>
+        </label>
       <%= f.text_field :username, autofocus: true %></div>
 
       <div><%= f.label :email %>

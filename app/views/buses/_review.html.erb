@@ -2,7 +2,7 @@
   <li id="<%= "review-#{review.id}" %>">
     <div class="row">
       <div class="small-2 column">
-        <ul>
+        <ul class="no-bullet">
           <li>
             <a class="clearing-thumbs">
             <img src=<%= review.user.profile_photo %>>
@@ -25,9 +25,13 @@
       </div>
       <div class="small-8 column">
         <p>
-          <%= review.user.username.upcase %>
-          rode bus <%= @bus.number %>
-          <%= review.ride.direction %>
+          <%= review.user.username.titlecase %>
+          rode bus <%= @bus.number %> towards
+          <% if review.ride.direction == "inbound" %>
+            <%= review.ride.bus.inbound %>
+          <% else %>
+            <%= review.ride.bus.outbound %>
+          <% end %>
           on a <%= review.ride.day %>
           between <%= review.ride.timeframe %>
         </p>
@@ -50,7 +54,7 @@
             </li>
           <% else %>
             <li>
-              <span class="foundicon-arrow-up"><%= review.up_votes %> Up </i>
+              <%= review.up_votes %> Up
             </li>
             <li>
               <%= review.down_votes %> Down
@@ -62,4 +66,3 @@
     <hr>
   </li>
 <% end %>
-

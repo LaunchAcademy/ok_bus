@@ -12,9 +12,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :reviews, only: [:update, :destroy] do
+  resources :reviews, only: [:index, :update, :destroy] do
     resources :votes, only: [:destroy]
   end
+
+  resources :users, only: :show
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

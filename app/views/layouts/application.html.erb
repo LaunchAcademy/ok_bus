@@ -36,6 +36,9 @@
           <% if current_user.admin? %>
             <li><%= link_to "View Users", admin_users_path %></li>
           <% end %>
+          <% if current_user %>
+            <li><%= link_to "User Profile", user_path(current_user) %></li>
+          <% end %>
           <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
         <% end %>
       </ul>
