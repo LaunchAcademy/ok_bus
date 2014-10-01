@@ -3,7 +3,7 @@
 <%= @user.email %>
 <%= link_to "Edit Info", edit_user_registration_path %>
 <br>
-<p><h4>Your reviews:</h4>
+<div><h4>Your reviews:</h4>
   <ul>
     <% @reviews.each do |review| %>
       <li>Bus: <%= review.ride.bus.number %><br>
@@ -13,4 +13,4 @@
       </li>
     <% end %>
   <ul>
-</p>
+</div>

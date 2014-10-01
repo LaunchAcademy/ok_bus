@@ -12,6 +12,7 @@ feature "User can view profile page", %{
   context "authenticated user" do
     before :each do
       @user = FactoryGirl.create(:user)
+      @reviews = FactoryGirl.create_list(:review, 2, user: @user)
       sign_in_as(@user)
     end
 
@@ -20,6 +21,9 @@ feature "User can view profile page", %{
       expect(page).to have_content(@user.username)
       expect(page).to have_content(@user.email)
       expect(page).to have_content "Your reviews"
+      @reviews.each do |review|
+        expect(page).to have_content(review.body)
+      end
     end
 
     scenario "update user info" do
@@ -33,21 +37,6 @@ feature "User can view profile page", %{
 
       click_on "Update"
       expect(page).to have_content "You updated your account successfully"
-    end
-
-    scenario "view all posted reviews" do
-      review = FactoryGirl.build(:review, user: @user, ride: ride)
-
-      visit bus_path(bus)
-      click_on "New Review"
-
-      select review.ride.description, from: "review[ride_id]"
-      select review.rating, from: "review[rating]"
-      fill_in "Body", with: review.body
-
-      click_on "Create Review"
-      click_on "User Profile"
-      expect(page).to have_content(review.body)
     end
   end
 end
