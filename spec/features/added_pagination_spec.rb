@@ -6,7 +6,7 @@ feature "Pagination" do
     before :all do
       @admin = FactoryGirl.create(:user, admin: true)
       @user = FactoryGirl.create(:user)
-      @users = create_list(:user,User.default_per_page + 1)
+      @users = create_list(:user,User.default_per_page)
       @buses = create_list(:bus,Bus.default_per_page + 1)
     end
 
