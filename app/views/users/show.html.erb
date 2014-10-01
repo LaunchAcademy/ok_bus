@@ -1,16 +1,65 @@
-<img src="<%= @user.profile_photo %>"></img>
-<h2><%= @user.username %></h2>
-<%= @user.email %>
-<%= link_to "Edit Info", edit_user_registration_path %>
 <br>
-<div><h4>Your reviews:</h4>
-  <ul>
+<div class="row">
+  <div class="small-2 column">
+    <img src="<%= @user.profile_photo %>"></img>
+  </div>
+  <div class="small-10 column">
+    <ul class="no-bullet">
+      <li><h2><%= @user.username.upcase %></h2></li>
+      <li><%= @user.email %></li>
+      <li><%= link_to "Edit Info", edit_user_registration_path %></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <h4>Your Reviews:</h4>
+  <ul class="no-bullet">
     <% @reviews.each do |review| %>
-      <li>Bus: <%= review.ride.bus.number %><br>
-          Direction: <%= review.ride.direction %><br>
-          Timeframe: <%= review.ride.timeframe %><br>
-          <%= review.body %>
+      <li id="<%= "review-#{review.id}" %>">
+        <div class="row panel">
+          <div class="small-2 column">
+            <ul class="no-bullet">
+              <li>
+                <%= link_to "Edit",
+                  edit_bus_review_path(review.ride.bus, review) %>
+                 | <%= link_to 'Delete',
+                    user_path(@user),
+                    method: :delete,
+                    data: { confirm:
+                            'Are you sure?'
+                            } %>
+              </li>
+            </ul>
+          </div>
+          <div class="small-8 column">
+            <p>
+              <%= link_to "Bus" + review.ride.bus.number, bus_path(review.ride.bus) %> towards
+              <% if review.ride.direction == "inbound" %>
+                <%= review.ride.bus.inbound %>
+              <% else %>
+                <%= review.ride.bus.outbound %>
+              <% end %>
+              on a <%= review.ride.day %>
+              between <%= review.ride.timeframe %>
+            </p>
+            <p><%= review.rating %> out of 5</p>
+            <p><%= review.body %></p>
+          </div>
+          <div class="small-2 column">
+            <ul class="no-bullet">
+              <li>
+                <%= review.up_votes %> Up
+              </li>
+              <li>
+                <%= review.down_votes %> Down
+              </li>
+            </ul>
+          </div>
+        </div>
       </li>
     <% end %>
   <ul>
 </div>
+
+
+

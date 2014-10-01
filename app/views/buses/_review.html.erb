@@ -25,9 +25,13 @@
       </div>
       <div class="small-8 column">
         <p>
-          <%= review.user.username.upcase %>
-          rode bus <%= review.ride.bus.number %>
-          <%= review.ride.direction %>
+          <%= review.user.username.titlecase %>
+          rode bus <%= @bus.number %> towards
+          <% if review.ride.direction == "inbound" %>
+            <%= review.ride.bus.inbound %>
+          <% else %>
+            <%= review.ride.bus.outbound %>
+          <% end %>
           on a <%= review.ride.day %>
           between <%= review.ride.timeframe %>
         </p>
