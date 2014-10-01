@@ -20,12 +20,10 @@ feature "User views all reviews for bus", %{
   scenario "reviews are in order with most recent first" do
     review1 = FactoryGirl.create(:review)
     review2 = FactoryGirl.create(:review, ride: review1.ride)
-    user1 = review1.user.username.upcase
-    user2 = review2.user.username.upcase
     bus = review1.ride.bus
     visit bus_path(bus)
-    user1 = review1.user.username.upcase
-    user2 = review2.user.username.upcase
+    user1 = review1.user.username.titlecase
+    user2 = review2.user.username.titlecase
     if review1.created_at > review2.created_at
       expect(user1).to appear_before user2
     else
@@ -39,7 +37,6 @@ feature "User views all reviews for bus", %{
     ride = review.ride
     visit bus_path(bus)
     expect(page).to have_content ride.timeframe
-    expect(page).to have_content ride.direction
     expect(page).to have_content ride.day
   end
 end
