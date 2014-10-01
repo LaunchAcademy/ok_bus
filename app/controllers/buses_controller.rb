@@ -3,7 +3,7 @@ class BusesController < ApplicationController
     if params[:search]
       @buses = Bus.search(params[:search]).order(:number)
     else
-      @buses = Bus.all.sort_by(&:order_numbers)
+      @buses = Bus.all.sort_by(&:order_number)
     end
   end
 
