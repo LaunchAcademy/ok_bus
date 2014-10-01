@@ -17,7 +17,7 @@ feature "User searches for a bus", %{
       @user = FactoryGirl.create(:user)
       sign_in_as(@user)
       @matching_bus = FactoryGirl.create(:bus)
-      @non_matching_buses = ["1", "20"].map do |line_no|
+      @non_matching_buses = ["12", "20"].map do |line_no|
         FactoryGirl.create(:bus, number: line_no)
       end
 
