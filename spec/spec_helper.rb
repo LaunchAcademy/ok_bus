@@ -78,4 +78,7 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 =end
+require 'coveralls'
+Coveralls.wear!('rails')
+
 end
