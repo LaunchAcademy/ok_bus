@@ -3,10 +3,11 @@ require 'rails_helper'
 feature "Pagination" do
 
   context "browsing website" do
-    before :all do
-      @admin = FactoryGirl.create(:user, admin: true)
-      @user = FactoryGirl.create(:user)
-    end
+
+    @admin = FactoryGirl.create(:user, admin: true)
+    @user = FactoryGirl.create(:user)
+    @users = FactoryGirl.create_list(:user , User.default_per_page + 1)
+    @buses = FactoryGirl.create_list(:bus, Bus.default_per_page + 1)
 
     scenario "admin visits user index" do
       sign_in_as(@admin)
