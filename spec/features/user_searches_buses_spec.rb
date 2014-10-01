@@ -8,29 +8,30 @@ feature "User searches for a bus", %{
 
   Acceptance Criteria:
 
-  I must be logged in to edit a review
-  I can only edit my own review
-  I can get to the edit page from the
-  bus details page
+  I must be logged in to search for a bus
+  I can get to the search page from the
+  buses index page
   } do
 
     before :each do
+      @user = FactoryGirl.create(:user)
+      sign_in_as(@user)
+      @matching_bus = FactoryGirl.create(:bus)
+      @non_matching_buses = ["1", "20"].map do |line_no|
+        FactoryGirl.create(:bus, number: line_no)
+      end
+
       visit buses_path
     end
 
-    scenario "user searches for valid search" do
-      bus = FactoryGirl.create(:bus)
-
-      fill_in "search", with: bus.number
+    scenario "user searches for a bus" do
+      fill_in "search", with: @matching_bus.number
       click_button "Search"
 
-      expect(page).to have_content(bus.number)
-    end
+      expect(page).to have_content(@matching_bus.number)
 
-    scenario "user is notified when search fails" do
-      fill_in "search", with: "mass ave"
-      click_button "Search"
-
-      expect(page).to have_content("Could not find your search term")
+      @non_matching_buses.each do |bus|
+        expect(page).to_not have_content(bus.number)
+      end
     end
-  end
+end
