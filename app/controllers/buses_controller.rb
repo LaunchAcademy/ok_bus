@@ -8,7 +8,7 @@ class BusesController < ApplicationController
         flash[:notice] = "Could not find your search term"
       end
     else
-      @buses = Bus.order(:number)
+      @buses = Bus.all.sort_by(&:order_number)
     end
   end
 
