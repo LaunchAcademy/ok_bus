@@ -45,6 +45,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'dotenv-rails'
   gem 'faker'
+  gem 'email_spec'
+  gem 'mailcatcher'
 end
 
 gem 'rails_12factor', group: :production
