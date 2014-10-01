@@ -11,5 +11,6 @@ class BusesController < ApplicationController
   def show
     @bus = Bus.find(params[:id])
     @reviews = @bus.reviews.order(created_at: :desc)
+    binding.pry
   end
 end
