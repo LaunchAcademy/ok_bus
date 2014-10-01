@@ -38,7 +38,7 @@ feature "User edits a review", %{
       visit bus_path(bus)
       click_on "Edit"
       fill_in "Body", with: "Some new text"
-      click_on "Submit"
+      click_on "Submit Review"
 
       expect(page).to have_content "Review successfully updated."
       expect(page).to have_content "Some new text"
