@@ -37,6 +37,8 @@ gem 'fog'
 
 gem 'mini_magick'
 
+gem 'quiet_assets'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
