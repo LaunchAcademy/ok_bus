@@ -13,25 +13,25 @@ feature "User searches for a bus", %{
   buses index page
   } do
 
-    before :each do
-      @user = FactoryGirl.create(:user)
-      sign_in_as(@user)
-      @matching_bus = FactoryGirl.create(:bus)
-      @non_matching_buses = ["12", "20"].map do |line_no|
-        FactoryGirl.create(:bus, number: line_no)
-      end
-
-      visit buses_path
+  before :each do
+    @user = FactoryGirl.create(:user)
+    sign_in_as(@user)
+    @matching_bus = FactoryGirl.create(:bus)
+    @non_matching_buses = ["12", "20"].map do |line_no|
+      FactoryGirl.create(:bus, number: line_no)
     end
 
-    scenario "user searches for a bus" do
-      fill_in "search", with: @matching_bus.number
-      click_button "Search"
+    visit buses_path
+  end
 
-      expect(page).to have_content(@matching_bus.number)
+  scenario "user searches for a bus" do
+    fill_in "search", with: @matching_bus.number
+    click_button "Search"
 
-      @non_matching_buses.each do |bus|
-        expect(page).to_not have_content(bus.number)
-      end
+    expect(page).to have_content(@matching_bus.number)
+
+    @non_matching_buses.each do |bus|
+      expect(page).to_not have_content(bus.number)
     end
+  end
 end

@@ -1,5 +1,5 @@
 class BusesController < ApplicationController
-    def index
+  def index
     if params[:search]
       @buses = Bus.search(params[:search]).order(:number)
 
