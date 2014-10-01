@@ -28,7 +28,7 @@ feature "User adds a review and receives email", %{
       select review.ride.description, from: "review[ride_id]"
       select review.rating, from: "review[rating]"
 
-      click_on "Create Review"
+      click_on "Submit Review"
 
       expect(page).to have_content "Review successfully created."
 
