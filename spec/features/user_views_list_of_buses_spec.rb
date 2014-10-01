@@ -13,8 +13,9 @@ feature "User views list of buses", %{
 
   scenario "listed in order" do
     bus1 = Bus.create(number: "2", inbound: "Boston", outbound: "New York")
+    bus2 = Bus.create(number: "10", inbound: "Providence", outbound: "Boston")
     visit buses_path
-    expect(page).to have_content bus1.number
+    expect(bus1.outbound).to appear_before bus2.inbound
   end
 
   scenario "links to individual bus page" do
