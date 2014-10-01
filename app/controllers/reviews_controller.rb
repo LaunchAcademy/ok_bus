@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to bus_path(@bus),
         notice: "Review successfully created."
-        UserMailer.review_email(@review).deliver
+      UserMailer.review_email(@review).deliver
     else
       render "new"
     end
