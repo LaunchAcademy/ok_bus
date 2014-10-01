@@ -1,0 +1,16 @@
+<img src="<%= @user.profile_photo %>"></img>
+<h2><%= @user.username %></h2>
+<%= @user.email %>
+<%= link_to "Edit Info", edit_user_registration_path %>
+<br>
+<div><h4>Your reviews:</h4>
+  <ul>
+    <% @reviews.each do |review| %>
+      <li>Bus: <%= review.ride.bus.number %><br>
+          Direction: <%= review.ride.direction %><br>
+          Timeframe: <%= review.ride.timeframe %><br>
+          <%= review.body %>
+      </li>
+    <% end %>
+  <ul>
+</div>
