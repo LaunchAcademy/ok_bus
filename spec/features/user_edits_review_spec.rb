@@ -35,7 +35,8 @@ feature "User edits a review", %{
 
     scenario "edit review from the bus detail page" do
       ride_2 = FactoryGirl.create(
-        :ride, bus: bus,
+        :ride,
+        bus: bus,
         direction: "outbound",
         timeframe: "3-6PM"
         )
