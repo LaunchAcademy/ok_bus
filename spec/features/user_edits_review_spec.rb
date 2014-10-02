@@ -34,7 +34,11 @@ feature "User edits a review", %{
     end
 
     scenario "edit review from the bus detail page" do
-      ride_2 = FactoryGirl.create(:ride, bus: bus, direction: "outbound", timeframe: "3-6PM")
+      ride_2 = FactoryGirl.create(
+        :ride, bus: bus,
+        direction: "outbound",
+        timeframe: "3-6PM"
+        )
       sign_in_as(review.user)
       visit bus_path(bus)
       click_on "Edit"
