@@ -15,4 +15,12 @@ class Review < ActiveRecord::Base
   def down_votes
     votes.where(direction: "down").count
   end
+
+  def bus_destination
+    if ride.direction = "inbound"
+      ride.bus.inbound
+    else
+      ride.bus.outbound
+    end
+  end
 end
