@@ -3,7 +3,7 @@ require 'rails_helper'
 feature "Pagination" do
 
   context "browsing website" do
-    before :each do
+    before :all do
       @admin = FactoryGirl.create(:user, admin: true)
       @user = FactoryGirl.create(:user)
       @users = FactoryGirl.create_list(:user,User.default_per_page)
@@ -21,7 +21,7 @@ feature "Pagination" do
       sign_in_as(@user)
       visit buses_path
       click_on 'Next'
-      expect(response).to redirect_to('/buses?page=2')
+      response.should redirect_to('/buses?page=2')
     end
   end
 end

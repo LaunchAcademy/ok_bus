@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :username,
-    presence: true,
+    presence: true
     uniqueness: true
   mount_uploader :profile_photo, ProfilePhotoUploader
 
