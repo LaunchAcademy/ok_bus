@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_filter :authorize!
   def index
-    @users = User.order(:username).page(params[:page]).per(25)
+    @users = User.where(admin: false).order(:username).page(params[:page]).per(25)
   end
 
   def destroy

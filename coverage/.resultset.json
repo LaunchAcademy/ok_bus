@@ -1,14 +1,13 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/carlypulver/Dropbox/launchacademy/group_project/ok_bus/app/models/user.rb": [
+      "/Users/Jonathan/Dropbox/launchacademy/ok_bus/app/models/user.rb": [
         1,
         1,
         1,
         null,
         null,
         1,
-        null,
         null,
         1,
         null,
@@ -27,11 +26,11 @@
         1,
         null,
         1,
-        283,
+        0,
         null,
         null
       ],
-      "/Users/carlypulver/Dropbox/launchacademy/group_project/ok_bus/app/uploaders/profile_photo_uploader.rb": [
+      "/Users/Jonathan/Dropbox/launchacademy/ok_bus/app/uploaders/profile_photo_uploader.rb": [
         null,
         1,
         null,
@@ -89,11 +88,11 @@
         null,
         null
       ],
-      "/Users/carlypulver/Dropbox/launchacademy/group_project/ok_bus/app/helpers/application_helper.rb": [
+      "/Users/Jonathan/Dropbox/launchacademy/ok_bus/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/carlypulver/Dropbox/launchacademy/group_project/ok_bus/app/helpers/votes_helper.rb": [
+      "/Users/Jonathan/Dropbox/launchacademy/ok_bus/app/helpers/votes_helper.rb": [
         1,
         1,
         28,
@@ -124,7 +123,7 @@
         null,
         null
       ],
-      "/Users/carlypulver/Dropbox/launchacademy/group_project/ok_bus/app/mailers/user_mailer.rb": [
+      "/Users/Jonathan/Dropbox/launchacademy/ok_bus/app/mailers/user_mailer.rb": [
         1,
         1,
         null,
@@ -154,7 +153,7 @@
         null,
         null
       ],
-      "/Users/carlypulver/Dropbox/launchacademy/group_project/ok_bus/app/models/bus.rb": [
+      "/Users/Jonathan/Dropbox/launchacademy/ok_bus/app/models/bus.rb": [
         1,
         1,
         1,
@@ -185,14 +184,14 @@
         null,
         null
       ],
-      "/Users/carlypulver/Dropbox/launchacademy/group_project/ok_bus/app/controllers/buses_controller.rb": [
+      "/Users/Jonathan/Dropbox/launchacademy/ok_bus/app/controllers/buses_controller.rb": [
         1,
         1,
-        53,
+        52,
         0,
         null,
-        53,
-        53,
+        52,
+        52,
         null,
         null,
         null,
@@ -202,7 +201,7 @@
         null,
         null
       ],
-      "/Users/carlypulver/Dropbox/launchacademy/group_project/ok_bus/app/controllers/application_controller.rb": [
+      "/Users/Jonathan/Dropbox/launchacademy/ok_bus/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -211,8 +210,8 @@
         null,
         1,
         7,
-        2,
-        2,
+        1,
+        1,
         null,
         null,
         null,
@@ -223,11 +222,11 @@
         null,
         null
       ],
-      "/Users/carlypulver/Dropbox/launchacademy/group_project/ok_bus/app/controllers/admin/users_controller.rb": [
+      "/Users/Jonathan/Dropbox/launchacademy/ok_bus/app/controllers/admin/users_controller.rb": [
         1,
         1,
         1,
-        4,
+        5,
         null,
         null,
         1,
@@ -243,7 +242,7 @@
         null,
         null
       ],
-      "/Users/carlypulver/Dropbox/launchacademy/group_project/ok_bus/app/models/review.rb": [
+      "/Users/Jonathan/Dropbox/launchacademy/ok_bus/app/models/review.rb": [
         1,
         1,
         1,
@@ -262,7 +261,19 @@
         null,
         null
       ],
-      "/Users/carlypulver/Dropbox/launchacademy/group_project/ok_bus/app/models/ride.rb": [
+      "/Users/Jonathan/Dropbox/launchacademy/ok_bus/app/models/vote.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null
+      ],
+      "/Users/Jonathan/Dropbox/launchacademy/ok_bus/app/models/ride.rb": [
         1,
         1,
         1,
@@ -298,19 +309,7 @@
         null,
         null
       ],
-      "/Users/carlypulver/Dropbox/launchacademy/group_project/ok_bus/app/models/vote.rb": [
-        1,
-        1,
-        1,
-        null,
-        1,
-        null,
-        1,
-        null,
-        1,
-        null
-      ],
-      "/Users/carlypulver/Dropbox/launchacademy/group_project/ok_bus/app/controllers/reviews_controller.rb": [
+      "/Users/Jonathan/Dropbox/launchacademy/ok_bus/app/controllers/reviews_controller.rb": [
         1,
         1,
         1,
@@ -381,7 +380,7 @@
         null,
         null
       ],
-      "/Users/carlypulver/Dropbox/launchacademy/group_project/ok_bus/app/controllers/votes_controller.rb": [
+      "/Users/Jonathan/Dropbox/launchacademy/ok_bus/app/controllers/votes_controller.rb": [
         1,
         1,
         null,
@@ -423,6 +422,6 @@
         null
       ]
     },
-    "timestamp": 1412199509
+    "timestamp": 1412258738
   }
 }

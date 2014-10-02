@@ -30,7 +30,7 @@ feature "Admin fuctionality", %{
       prev_count = User.count
       first(:link, "Delete").click
       expect(User.count).to eq prev_count - 1
-      expect(page).to have_content("User successfully deleted")
+      expect(page).to have_content "User successfully deleted"
       expect(page).to_not have_content @user.username
     end
 
