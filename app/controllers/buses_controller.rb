@@ -3,7 +3,8 @@ class BusesController < ApplicationController
     if params[:search]
       @buses = Bus.search(params[:search]).order(:number).page(params[:page]).per(25)
     else
-      @buses = Bus.order(:number).page(params[:page]).per(25)
+      @buses = Bus.all.sort_by(&:order_number)
+      @buses = Kaminari.paginate_array(@buses).page(params[:page]).per(25)
     end
   end
 
