@@ -10,6 +10,8 @@ feature "Admin fuctionality", %{
   I must be logged in and identified as an admin
   I can visit an index of users (not accessible by regular users)
   I can delete a user
+  I can make a user into an admin
+  I can remove admin rights
   I can delete a user's review
   } do
 
@@ -32,6 +34,23 @@ feature "Admin fuctionality", %{
       expect(User.count).to eq prev_count - 1
       expect(page).to have_content "User successfully deleted"
       expect(page).to_not have_content @user.username
+    end
+
+    scenario "admin makes user into admin" do
+      sign_in_as(@admin)
+      click_on "View Users"
+      first(:button, "Make Admin").click
+      expect(page).to have_content("#{@user.username} is now an admin")
+      expect(@user.admin).should eql?(true)
+    end
+
+    scenario "admin removes admin rights" do
+      sign_in_as(@admin)
+      @admin2 = FactoryGirl.create(:user, admin: true)
+      click_on "View Users"
+      first(:button, "Remove as Admin").click
+      expect(page).to have_content("#{@admin2.username} is no longer an admin")
+      expect(@admin2.admin).should eql?(false)
     end
 
     scenario "admin can delete another user's review" do

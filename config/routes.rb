@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :destroy] do
       get '/page/:page', action: :index, on: :collection
     end
+    patch '/users/:id/update_role' => 'users#update_role', as: :update_role
   end
 
   resources :buses, only: [:index, :show] do
