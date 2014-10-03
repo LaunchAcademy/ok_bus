@@ -3,5 +3,4 @@ rvm:
   - 2.0.0
 before_script:
   - psql -c 'create database ok_bus_test;' -U postgres
-services:
-  - elasticsearch
+  - bundle exec rake db:migrate --trace
