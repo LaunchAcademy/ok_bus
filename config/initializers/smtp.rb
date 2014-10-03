@@ -1,4 +1,4 @@
-if Rails.env.development?
+if Rails.env.development? || Rails.env.test?
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     address: "localhost",
@@ -12,6 +12,6 @@ ActionMailer::Base.smtp_settings = {
   address:    "smtp.mandrillapp.com",
   user_name:  ENV["MANDRILL_USERNAME"],
   password:   ENV["MANDRILL_APIKEY"],
-  domain:     "heroku.com",
+  domain:     "mandrillapp.com",
   authentication: :plain
 }
