@@ -1,0 +1,5 @@
+$(document).ready ->
+  $("#posts .no-bullet").infiniteScroll
+    navSelector: "nav.pagination"
+    nextSelector: "nav.pagination a[rel=next]"
+    itemSelector: "#row tr.post"
