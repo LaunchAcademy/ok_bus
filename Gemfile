@@ -54,6 +54,7 @@ end
 
 group :test do
   gem 'coveralls', require: false
+  gem "nyan-cat-formatter"
 end
 
 gem 'rails_12factor', group: :production
