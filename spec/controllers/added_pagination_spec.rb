@@ -3,25 +3,20 @@ require 'rails_helper'
 feature "Pagination" do
 
   context "browsing website" do
-    before :all do
-      @admin = FactoryGirl.create(:user, admin: true)
-      @user = FactoryGirl.create(:user)
-      @users = FactoryGirl.create_list(:user,User.default_per_page)
-      @buses = FactoryGirl.create_list(:bus,Bus.default_per_page + 1)
-    end
+  #    FactoryGirl.create(:user, admin: true)
+      @admin = User.first
+  #    26.times {FactoryGirl.create(:user)}
+  #    26.times {FactoryGirl.create(:bus)}
 
     scenario "admin visits user index" do
-      sign_in_as(@admin)
+  #    sign_in_as(User.new(username: "MRMRMRMRMR", ))
       visit admin_users_path
-      click_on 'Next'
-      expect(response).to redirect_to('/admin/users?page=2')
+      page.should have_selector('nav.pagination')
     end
 
     scenario "user sees buses" do
-      sign_in_as(@user)
-      visit buses_path
-      click_on 'Next'
-      response.should redirect_to('/buses?page=2')
+      visit root_path
+      page.should have_selector('nav.pagination')
     end
   end
 end
