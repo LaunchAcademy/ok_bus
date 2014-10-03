@@ -3,10 +3,16 @@ Rails.application.routes.draw do
   root to: 'buses#index'
 
   namespace :admin do
-    resources :users, only: [:index, :destroy]
+    resources :users, only: [:index, :destroy] do
+      get '/page/:page', action: :index, on: :collection
+    end
+    patch '/users/:id/update_role' => 'users#update_role', as: :update_role
   end
 
   resources :buses, only: [:index, :show] do
+    resources :reviews, only: [:new, :create, :edit] do
+      get '/page/:page', action: :index, on: :collection
+    end
     resources :reviews, only: [:new, :create, :edit, :update] do
       resources :votes, only: [:create, :update]
     end
