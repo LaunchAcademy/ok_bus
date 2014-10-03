@@ -34,7 +34,15 @@ feature "User adds a review", %{
       visit bus_path(bus)
       click_on "New Review"
 
-      select review.ride.description, from: "review[ride_id]"
+      select review.ride.timeframe, from: "ride[timeframe]"
+      select review.ride.day, from: "ride[day]"
+
+      if review.ride.direction = "inbound"
+        select review.ride.bus.inbound, from: "ride[direction]"
+      else
+        select review.ride.bus.outbound, from: "ride[direction]"
+      end
+
       select review.rating, from: "review[rating]"
 
       click_on "Submit Review"
@@ -46,7 +54,14 @@ feature "User adds a review", %{
       visit bus_path(bus)
       click_on "New Review"
 
-      select ride.description, from: "Ride"
+      select ride.timeframe, from: "ride[timeframe]"
+      select ride.day, from: "ride[day]"
+
+      if ride.direction = "inbound"
+        select ride.bus.inbound, from: "ride[direction]"
+      else
+        select ride.bus.outbound, from: "ride[direction]"
+      end
 
       click_on "Submit Review"
 
