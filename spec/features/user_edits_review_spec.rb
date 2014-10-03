@@ -34,13 +34,27 @@ feature "User edits a review", %{
     end
 
     scenario "edit review from the bus detail page" do
+      ride_2 = FactoryGirl.create(
+        :ride,
+        bus: bus,
+        direction: "outbound",
+        timeframe: "3-6PM"
+        )
       sign_in_as(review.user)
       visit bus_path(bus)
       click_on "Edit"
+      select ride_2.timeframe, from: "ride[timeframe]"
+      select ride_2.day, from: "ride[day]"
+      select ride_2.bus.outbound, from: "ride[direction]"
       fill_in "Body", with: "Some new text"
-      click_on "Submit"
+
+      click_on "Submit Review"
 
       expect(page).to have_content "Review successfully updated."
+      within ".reviews" do
+        expect(page).to have_content ride_2.bus.outbound
+        expect(page).to have_content ride_2.timeframe
+      end
       expect(page).to have_content "Some new text"
     end
   end

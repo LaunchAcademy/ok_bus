@@ -12,6 +12,7 @@
         </ul>
       </div>
     <% end %>
+
       <div>
         <label class="left">
           <%= f.label :ride_id %>
@@ -19,8 +20,17 @@
         <label class="right">
           <small>required</small>
         </label>
-        <%= f.collection_select :ride_id, @bus.rides, :id, :description %>
+        <%= fields_for :ride do |ride_form| %>
+          <%= ride_form.select :timeframe,
+            options_for_select(Ride::TIMEFRAMES, @review.ride.timeframe) %>
+          <%= ride_form.select :day,
+            options_for_select(Ride::DAYS, @review.ride.day) %>
+          <%= ride_form.select :direction,
+            options_for_select([[@bus.inbound, "inbound"],
+            [@bus.outbound, "outbound"]], @review.bus_destination) %>
+        <% end %>
       </div>
+
       <div>
         <label class="left">
           <%= f.label :rating %>
