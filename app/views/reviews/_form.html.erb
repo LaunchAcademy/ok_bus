@@ -22,12 +22,12 @@
         </label>
         <%= fields_for :ride do |ride_form| %>
           <%= ride_form.select :timeframe,
-            options_for_select(Ride::TIMEFRAMES, @review.ride.timeframe) %>
+            options_for_select(Ride::TIMEFRAMES, include_blank: true) %>
           <%= ride_form.select :day,
-            options_for_select(Ride::DAYS, @review.ride.day) %>
+            options_for_select(Ride::DAYS, include_blank: true) %>
           <%= ride_form.select :direction,
             options_for_select([[@bus.inbound, "inbound"],
-            [@bus.outbound, "outbound"]], @review.bus_destination) %>
+            [@bus.outbound, "outbound"]], include_blank: true) %>
         <% end %>
       </div>
 
